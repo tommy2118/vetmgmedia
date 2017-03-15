@@ -1,1 +1,35 @@
 @import url("whitespace-reset.css");
+
+body {
+  font: normal 18px Helvetica, Arial, sans-serif;
+  text-align: center;
+}
+
+header {
+  height: 200px;
+  background-color: lightgray;
+}
+
+header h1 {
+  padding-top: 50px;
+  font-size: 64px;
+  font-weight: bold;
+}
+
+main {
+  height: 730px;
+}
+
+main  p {
+  padding-top: 250px;
+  font-size: 36px;
+}
+
+footer {
+  height: 100px;
+  background-color: lightgray;
+}
+
+footer p {
+  padding-top: 60px;
+}

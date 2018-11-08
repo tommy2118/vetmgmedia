@@ -4,6 +4,4 @@ title: About
 permalink: /about/
 ---
 
-VetMG Media helps businesses become more efficient and effective through automation of business processes.
-
-We help businesses leverage the power of data that they often are already collecting, but not using to its fullest potential.
+When everything works, you hardly notice.  We design and develop technology solutions that provide impact, but don't get in your way.  We build custom software, websites, web applications and video solutions that make your business run.  We take care of the technology so you can focus on fulfilling your mission statement.

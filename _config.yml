@@ -18,7 +18,7 @@ email: tommy.caruso2118@gmail.com
 description: >- # this means to ignore newlines until "baseurl:"
   Custom software solutions that make your business processes
   more efficient and effective.
-baseurl: "" # the subpath of your site, e.g. /blog
+baseurl: "/blog" # the subpath of your site, e.g. /blog
 url: "http://vetmgmedia.com" # the base hostname & protocol for your site, e.g. http://example.com
 twitter_username: Tommy_2118
 github_username:  tommy2118

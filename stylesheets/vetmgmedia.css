@@ -177,3 +177,61 @@ nav a:hover {
   }
 }
 
+#contact {
+  background-color: #f7f7f7;
+  padding: 40px;
+}
+
+#contact h2 {
+  font-size: 2em;
+  margin-top: 0;
+}
+
+#contact form {
+  display: block; /* changed from grid to block */
+  margin-top: 20px;
+  text-align: center; /* added text-align to center the button */
+}
+
+#contact label {
+  display: flex;
+  font-size: 1.2em;
+  margin-bottom: 5px;
+}
+
+#contact input,
+#contact textarea {
+  border: none;
+  border-radius: 5px;
+  box-shadow: inset 0px 0px 5px rgba(0, 0, 0, 0.2);
+  font-size: 1.2em;
+  padding: 10px;
+  width: 100%;
+}
+
+#contact textarea {
+  resize: none;
+}
+
+#contact button[type="submit"] {
+  background-color: #0077b6;
+  border: none;
+  border-radius: 5px;
+  color: #fff;
+  cursor: pointer;
+  font-size: 1.2em;
+  margin-top: 20px; /* added margin to separate the button from the text area */
+  padding: 10px 20px; /* increased button padding for better visibility */
+  transition: background-color 0.3s ease-in-out;
+}
+
+#contact button[type="submit"]:hover {
+  background-color: #023e8a;
+}
+
+#contact #contact-form-message {
+  margin-top: 20px;
+  padding: 10px;
+  text-align: center;
+}
+

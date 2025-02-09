@@ -316,7 +316,7 @@
                               >
                               Featured Projects
                           </h2>
-                            <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
                               <div
                                   class="service-card bg-milwaukee-black p-8 fade-in"
                                   style="animation-delay: 0.2s"
@@ -343,7 +343,7 @@
                                   style="animation-delay: 0.4s"
                                   >
                                   <h3 class="text-xl font-bold mb-4 text-white tracking-tight">
-                                    Lytle
+                                    Lytle Landscape Construction
                                   </h3>
                                 <p class="text-gray-300 mb-4">
                                   Custom business website with advanced features and seamless user
@@ -351,6 +351,27 @@
                                 </p>
                                 <a
                                     href="https://lytle-landscape.com"
+                                    target="_blank"
+                                    rel="noopener noreferrer"
+                                    class="text-milwaukee-red hover:text-red-400 transition-colors duration-300 font-medium
+                                           focus:outline-none focus:ring-2 focus:ring-milwaukee-red focus:ring-offset-2"
+                                    >
+                                    View Project →
+                                </a>
+                              </div>
+                              <div
+                                  class="service-card bg-milwaukee-black p-8 fade-in"
+                                  style="animation-delay: 0.2s"
+                                  >
+                                  <h3 class="text-xl font-bold mb-4 text-white tracking-tight">
+                                    The DBT Resource
+                                  </h3>
+                                <p class="text-gray-300 mb-4">
+                                  User-friendly website for mental health resources, designed to
+                                  support individuals and therapists.
+                                </p>
+                                <a
+                                    href="https://thedbtresource.com"
                                     target="_blank"
                                     rel="noopener noreferrer"
                                     class="text-milwaukee-red hover:text-red-400 transition-colors duration-300 font-medium
@@ -606,6 +627,7 @@
             successMsg.classList.remove('hidden');
             errorMsg.classList.add('hidden');
             form.reset();
+            window.scrollTo(0, 0);
           } else {
             // Show error message
             result.classList.remove('hidden');

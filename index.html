@@ -4,19 +4,28 @@
     <meta charset="UTF-8" />
     <!-- Viewport for responsive design -->
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <!-- SEO: Meta Description -->
-    <meta name="description" content="VetMG Media offers high-performance web development services for modern businesses, specializing in construction and landscape industries." />
+    <!-- SEO: Enhanced Meta Description with keywords -->
+    <meta name="description" content="VetMG Media offers custom web development services for construction and landscape businesses. High-performance websites, responsive design, and SEO optimization to boost your online presence." />
+    <!-- Keywords -->
+    <meta name="keywords" content="web development, construction websites, landscape business websites, responsive design, SEO optimization, custom website development, Kentucky" />
+    <!-- Canonical URL -->
+    <link rel="canonical" href="https://vetmgmedia.com/" />
     <!-- Open Graph Tags -->
     <meta property="og:title" content="VetMG Media - Professional Web Development" />
     <meta property="og:description" content="Crafting custom, responsive websites for small businesses, focusing on high performance and tailored design." />
     <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://vetmgmedia.com/" />
     <meta property="og:image" content="https://vetmgmedia.com/og-image.png" />
-    <meta property="twitter:image" content="https://vetmgmedia.com/og-image.png" />
+    <!-- Twitter Card data -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="VetMG Media - Professional Web Development" />
+    <meta name="twitter:description" content="Custom web development for construction and landscape businesses." />
+    <meta name="twitter:image" content="https://vetmgmedia.com/og-image.png" />
 
-    <title>VetMG Media - Professional Web Development</title>
+    <title>VetMG Media - Custom Web Development for Construction & Landscape Businesses</title>
 
-    <!-- Tailwind CSS via CDN -->
-    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Tailwind CSS via CDN with defer to improve performance -->
+    <script src="https://cdn.tailwindcss.com" defer></script>
     <!-- Custom Tailwind config (optional) -->
     <script>
       tailwind.config = {
@@ -34,11 +43,14 @@
       }
     </script>
 
-    <!-- Google Fonts -->
+    <!-- Google Fonts with display=swap for better performance -->
     <link
         href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&display=swap"
         rel="stylesheet"
+        media="print"
+        onload="this.media='all'"
         />
+    <!-- Sitemap -->
     <link
         href="https://vetmgmedia.com/sitemap.xml"
         rel="alternate"
@@ -47,6 +59,33 @@
         />
     <!-- Favicon -->
     <link rel="icon" href="https://vetmgmedia.com/favicon.ico" />
+
+    <!-- Schema.org structured data with correct information -->
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "ProfessionalService",
+        "name": "VetMG Media",
+        "description": "Custom web development services for construction and landscape businesses",
+        "url": "https://vetmgmedia.com",
+        "telephone": "+15022409897",
+        "email": "tommy.caruso2118@gmail.com",
+        "address": {
+          "@type": "PostalAddress",
+          "streetAddress": "5319 Brookswood Road",
+          "addressLocality": "Crestwood",
+          "addressRegion": "KY",
+          "postalCode": "40014",
+          "addressCountry": "US"
+        },
+        "openingHours": "Mo,Tu,We,Th,Fr 09:00-17:00",
+        "image": "https://vetmgmedia.com/og-image.png",
+        "areaServed": {
+          "@type": "Country",
+          "name": "United States"
+        }
+      }
+    </script>
 
     <!-- Additional Styles -->
     <style>
@@ -80,6 +119,27 @@
         to {
           transform: translateX(0);
           opacity: 1;
+        }
+      }
+
+      /* Respect user's motion preferences */
+      @media (prefers-reduced-motion: reduce) {
+        .fade-in, .slide-in {
+          animation: none !important;
+          opacity: 1 !important;
+          transform: none !important;
+        }
+        
+        .service-card:hover {
+          transform: none !important;
+        }
+        
+        .hover-grow:hover {
+          transform: none !important;
+        }
+        
+        html {
+          scroll-behavior: auto !important;
         }
       }
 
@@ -134,13 +194,31 @@
         linear-gradient(90deg, rgba(227, 24, 55, 0.1) 1px, transparent 1px);
       background-size: 20px 20px;
       }
+      
+      /* Skip to main content link for accessibility */
+      .skip-link {
+        position: absolute;
+        top: -40px;
+        left: 0;
+        background: #E31837;
+        color: white;
+        padding: 8px;
+        z-index: 100;
+        transition: top 0.3s;
+      }
+      
+      .skip-link:focus {
+        top: 0;
+      }
     </style>
   </head>
   <body class="bg-white">
+    <!-- Skip to content link for accessibility -->
+    <a href="#main-content" class="skip-link">Skip to main content</a>
 
     <!-- Header -->
-    <header class="bg-milwaukee-black fixed w-full top-0 z-50">
-      <nav class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <header class="bg-milwaukee-black fixed w-full top-0 z-50" role="banner">
+      <nav class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8" aria-label="Main navigation">
         <div class="flex justify-between h-16">
           <!-- Logo / Brand -->
           <div class="flex items-center slide-in">
@@ -151,29 +229,33 @@
           </div>
 
           <!-- Desktop Navigation -->
-          <div class="hidden md:flex items-center space-x-1">
+          <div class="hidden md:flex items-center space-x-1" role="navigation">
             <a
                 href="#services"
                 class="nav-link text-white px-4 py-2 transition-colors duration-300 tracking-wide
                        focus:outline-none focus:ring-2 focus:ring-milwaukee-red"
+                aria-label="Go to services section"
                 >Services</a
               >
               <a
                   href="#portfolio"
                   class="nav-link text-white px-4 py-2 transition-colors duration-300 tracking-wide
                          focus:outline-none focus:ring-2 focus:ring-milwaukee-red"
+                  aria-label="Go to portfolio section"
                   >Portfolio</a
                 >
                 <a
                     href="#about"
                     class="nav-link text-white px-4 py-2 transition-colors duration-300 tracking-wide
                            focus:outline-none focus:ring-2 focus:ring-milwaukee-red"
+                    aria-label="Go to about section"
                     >About</a
                   >
                   <a
                       href="#contact"
                       class="nav-link text-white px-4 py-2 transition-colors duration-300 tracking-wide
                              focus:outline-none focus:ring-2 focus:ring-milwaukee-red"
+                      aria-label="Go to contact section"
                       >Contact</a
                     >
           </div>
@@ -182,7 +264,9 @@
                   <div class="md:hidden flex items-center">
                     <button
                         id="menu-toggle"
-                        aria-label="Toggle menu"
+                        aria-label="Toggle mobile menu"
+                        aria-expanded="false"
+                        aria-controls="mobile-menu"
                         class="text-white hover:text-milwaukee-red transition-colors duration-300
                                focus:outline-none focus:ring-2 focus:ring-milwaukee-red"
                         >
@@ -191,8 +275,10 @@
                             fill="none"
                             stroke="currentColor"
                             viewBox="0 0 24 24"
-                            aria-hidden="true"
+                            role="img"
+                            aria-labelledby="menu-toggle-title"
                             >
+                            <title id="menu-toggle-title">Menu icon</title>
                             <path
                                 stroke-linecap="round"
                                 stroke-linejoin="round"
@@ -205,30 +291,34 @@
         </div>
 
               <!-- Mobile Menu -->
-              <div id="mobile-menu" class="hidden md:hidden">
+              <div id="mobile-menu" class="hidden md:hidden" role="navigation" aria-label="Mobile navigation">
                 <div class="pt-2 pb-3 space-y-1">
                   <a
                       href="#services"
                       class="block px-3 py-2 text-white hover:bg-milwaukee-red transition-colors duration-300
                              focus:outline-none focus:ring-2 focus:ring-milwaukee-red"
+                      aria-label="Go to services section"
                       >Services</a
                     >
                     <a
                         href="#portfolio"
                         class="block px-3 py-2 text-white hover:bg-milwaukee-red transition-colors duration-300
                                focus:outline-none focus:ring-2 focus:ring-milwaukee-red"
+                        aria-label="Go to portfolio section"
                         >Portfolio</a
                       >
                       <a
                           href="#about"
                           class="block px-3 py-2 text-white hover:bg-milwaukee-red transition-colors duration-300
                                  focus:outline-none focus:ring-2 focus:ring-milwaukee-red"
+                          aria-label="Go to about section"
                           >About</a
                         >
                         <a
                             href="#contact"
                             class="block px-3 py-2 text-white hover:bg-milwaukee-red transition-colors duration-300
                                    focus:outline-none focus:ring-2 focus:ring-milwaukee-red"
+                            aria-label="Go to contact section"
                             >Contact</a
                           >
                 </div>
@@ -237,7 +327,7 @@
     </header>
 
                     <!-- Main Content -->
-                    <main>
+                    <main id="main-content" role="main">
                       <!-- Hero Section -->
                       <section class="bg-milwaukee-black pt-32 pb-20 tech-grid">
                         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -475,6 +565,7 @@
                                   action="https://api.web3forms.com/submit"
                                   method="POST"
                                   class="space-y-6 bg-white p-8 shadow-lg fade-in"
+                                  aria-label="Contact form"
                                   >
                                   <input
                                       type="hidden"
@@ -505,6 +596,9 @@
                                         id="name"
                                         name="name"
                                         required
+                                        aria-required="true"
+                                        aria-label="Your name"
+                                        autocomplete="name"
                                         class="mt-1 block w-full rounded border-milwaukee-black
                                                focus:border-milwaukee-red focus:ring-milwaukee-red transition-colors duration-300
                                                focus:outline-none focus:ring-2"
@@ -522,6 +616,9 @@
                                             id="email"
                                             name="email"
                                             required
+                                            aria-required="true"
+                                            aria-label="Your email address"
+                                            autocomplete="email"
                                             class="mt-1 block w-full rounded border-milwaukee-black
                                                    focus:border-milwaukee-red focus:ring-milwaukee-red transition-colors duration-300
                                                    focus:outline-none focus:ring-2"
@@ -539,6 +636,8 @@
                                                 name="message"
                                                 rows="4"
                                                 required
+                                                aria-required="true"
+                                                aria-label="Your message"
                                                 class="mt-1 block w-full rounded border-milwaukee-black
                                                        focus:border-milwaukee-red focus:ring-milwaukee-red transition-colors duration-300
                                                        focus:outline-none focus:ring-2"
@@ -546,16 +645,18 @@
                                         </div>
 
                                             <!-- Success/Error Messages -->
-                                            <div id="result" class="hidden">
+                                            <div id="result" class="hidden" aria-live="polite">
                                               <div
                                                   id="success"
                                                   class="hidden text-green-600 bg-green-50 p-4 rounded"
+                                                  role="status"
                                                   >
                                                   Thank you for your message! We'll get back to you soon.
                                               </div>
                                                 <div
                                                     id="error"
                                                     class="hidden text-red-600 bg-red-50 p-4 rounded"
+                                                    role="alert"
                                                     >
                                                     Oops! Something went wrong. Please try again.
                                                 </div>
@@ -567,6 +668,7 @@
                                                   class="w-full bg-milwaukee-red text-white px-6 py-3 hover-grow
                                                          transition-all tracking-wide font-medium rounded
                                                          focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-milwaukee-red"
+                                                  aria-label="Send message"
                                                   >
                                                   Send Message
                                               </button>
@@ -582,35 +684,59 @@
                     </main>
 
                     <!-- Footer -->
-                    <footer class="bg-milwaukee-black py-8">
+                    <footer class="bg-milwaukee-black py-8" role="contentinfo">
                       <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
                         <div class="text-center text-white">
-                          <p>&copy; 2021 VetMG Media. All rights reserved.</p>
+                          <p>&copy; <script>document.write(new Date().getFullYear())</script> VetMG Media. All rights reserved.</p>
                         </div>
                       </div>
                     </footer>
 
                     <!-- External JavaScript (defer to avoid render blocking) -->
                     <script defer>
-                      // Mobile Menu Toggle
+                      // Mobile Menu Toggle with accessibility improvements
                       document.addEventListener('DOMContentLoaded', () => {
       const toggleBtn = document.getElementById('menu-toggle');
       const mobileMenu = document.getElementById('mobile-menu');
 
       toggleBtn.addEventListener('click', () => {
+        const isExpanded = toggleBtn.getAttribute('aria-expanded') === 'true';
+        toggleBtn.setAttribute('aria-expanded', !isExpanded);
         mobileMenu.classList.toggle('hidden');
+      });
+      
+      // Close mobile menu when pressing Escape key
+      document.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape' && !mobileMenu.classList.contains('hidden')) {
+          mobileMenu.classList.add('hidden');
+          toggleBtn.setAttribute('aria-expanded', 'false');
+        }
+      });
+      
+      // Close mobile menu when clicking outside
+      document.addEventListener('click', (e) => {
+        if (!mobileMenu.contains(e.target) && !toggleBtn.contains(e.target) && !mobileMenu.classList.contains('hidden')) {
+          mobileMenu.classList.add('hidden');
+          toggleBtn.setAttribute('aria-expanded', 'false');
+        }
       });
     });
 
-    // Contact Form Submission
+    // Enhanced Contact Form Submission
     const form = document.querySelector('form');
     if (form) {
       const result = document.getElementById('result');
       const successMsg = document.getElementById('success');
       const errorMsg = document.getElementById('error');
+      const submitBtn = form.querySelector('button[type="submit"]');
 
       form.addEventListener('submit', async (e) => {
         e.preventDefault();
+        
+        // Show loading state
+        submitBtn.textContent = 'Sending...';
+        submitBtn.disabled = true;
+        
         const formData = new FormData(form);
 
         try {
@@ -627,18 +753,30 @@
             successMsg.classList.remove('hidden');
             errorMsg.classList.add('hidden');
             form.reset();
-            window.scrollTo(0, 0);
+            // Focus on success message for screen readers
+            successMsg.setAttribute('tabindex', '-1');
+            successMsg.focus();
           } else {
             // Show error message
             result.classList.remove('hidden');
             errorMsg.classList.remove('hidden');
             successMsg.classList.add('hidden');
+            // Focus on error message for screen readers
+            errorMsg.setAttribute('tabindex', '-1');
+            errorMsg.focus();
           }
         } catch (error) {
           // Show error message
           result.classList.remove('hidden');
           errorMsg.classList.remove('hidden');
           successMsg.classList.add('hidden');
+          // Focus on error message for screen readers
+          errorMsg.setAttribute('tabindex', '-1');
+          errorMsg.focus();
+        } finally {
+          // Reset button state
+          submitBtn.textContent = 'Send Message';
+          submitBtn.disabled = false;
         }
       });
     }

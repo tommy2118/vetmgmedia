@@ -25,7 +25,7 @@
     <title>VetMG Media - Custom Web Development for Construction & Landscape Businesses</title>
 
     <!-- Tailwind CSS via CDN with defer to improve performance -->
-    <script src="https://cdn.tailwindcss.com" defer></script>
+    <script src="https://cdn.tailwindcss.com"></script>
     <!-- Custom Tailwind config (optional) -->
     <script>
       tailwind.config = {
@@ -129,15 +129,15 @@
           opacity: 1 !important;
           transform: none !important;
         }
-        
+
         .service-card:hover {
           transform: none !important;
         }
-        
+
         .hover-grow:hover {
           transform: none !important;
         }
-        
+
         html {
           scroll-behavior: auto !important;
         }
@@ -194,7 +194,7 @@
         linear-gradient(90deg, rgba(227, 24, 55, 0.1) 1px, transparent 1px);
       background-size: 20px 20px;
       }
-      
+
       /* Skip to main content link for accessibility */
       .skip-link {
         position: absolute;
@@ -206,7 +206,7 @@
         z-index: 100;
         transition: top 0.3s;
       }
-      
+
       .skip-link:focus {
         top: 0;
       }
@@ -704,7 +704,7 @@
         toggleBtn.setAttribute('aria-expanded', !isExpanded);
         mobileMenu.classList.toggle('hidden');
       });
-      
+
       // Close mobile menu when pressing Escape key
       document.addEventListener('keydown', (e) => {
         if (e.key === 'Escape' && !mobileMenu.classList.contains('hidden')) {
@@ -712,7 +712,7 @@
           toggleBtn.setAttribute('aria-expanded', 'false');
         }
       });
-      
+
       // Close mobile menu when clicking outside
       document.addEventListener('click', (e) => {
         if (!mobileMenu.contains(e.target) && !toggleBtn.contains(e.target) && !mobileMenu.classList.contains('hidden')) {
@@ -732,11 +732,11 @@
 
       form.addEventListener('submit', async (e) => {
         e.preventDefault();
-        
+
         // Show loading state
         submitBtn.textContent = 'Sending...';
         submitBtn.disabled = true;
-        
+
         const formData = new FormData(form);
 
         try {

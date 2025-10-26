@@ -1,0 +1,1143 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <meta name="description" content="Find which contractor financing platforms you qualify for. Compare GreenSky, Synchrony, PowerPay, Wisetack, Enhancify, Service Finance, and FTL Finance." />
+
+  <meta property="og:title" content="Financing Platform Matcher - Which Programs Can You Qualify For?" />
+  <meta property="og:description" content="Free tool: Discover which major financing platforms (GreenSky, Synchrony, PowerPay, etc.) your business qualifies for based on years in business, revenue, and credit." />
+  <meta property="og:type" content="website" />
+
+  <title>Financing Platform Matcher - VetMG</title>
+
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            'milwaukee-red': '#E31837',
+            'milwaukee-black': '#333333',
+            'milwaukee-gray': '#F5F5F5',
+          },
+        },
+      },
+    }
+  </script>
+
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+
+  <style>
+    body {
+      font-family: 'Space Grotesk', sans-serif;
+    }
+
+    .hidden {
+      display: none;
+    }
+
+    .fade-in {
+      animation: fadeIn 0.5s ease-in;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(10px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    .platform-card {
+      transition: all 0.3s ease;
+    }
+
+    .platform-card:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 8px 16px rgba(0,0,0,0.1);
+    }
+
+    .badge-qualified {
+      background: #10b981;
+      color: white;
+      padding: 0.25rem 0.75rem;
+      border-radius: 9999px;
+      font-size: 0.75rem;
+      font-weight: 600;
+    }
+
+    .badge-maybe {
+      background: #f59e0b;
+      color: white;
+      padding: 0.25rem 0.75rem;
+      border-radius: 9999px;
+      font-size: 0.75rem;
+      font-weight: 600;
+    }
+
+    .badge-unlikely {
+      background: #ef4444;
+      color: white;
+      padding: 0.25rem 0.75rem;
+      border-radius: 9999px;
+      font-size: 0.75rem;
+      font-weight: 600;
+    }
+  </style>
+</head>
+<body class="bg-gray-50">
+
+  <!-- Email Gate -->
+  <div id="email-gate" class="min-h-screen flex items-center justify-center p-4">
+    <div class="max-w-3xl w-full bg-white rounded-lg shadow-xl p-8">
+      <div class="text-center mb-8">
+        <h1 class="text-4xl font-bold text-gray-900 mb-4">
+          Which Financing Platforms Can You Qualify For?
+        </h1>
+        <p class="text-xl text-gray-600 mb-6">
+          Answer 5 quick questions and discover your options across 7 major platforms
+        </p>
+
+        <div class="bg-milwaukee-red bg-opacity-10 border-l-4 border-milwaukee-red p-6 text-left mb-8">
+          <h2 class="font-bold text-lg mb-3 text-gray-900">What You'll Get (100% Free)</h2>
+          <ul class="space-y-2 text-gray-700">
+            <li class="flex items-start gap-2">
+              <span class="text-milwaukee-red font-bold">✓</span>
+              <span><strong>Personalized platform matches</strong> - Which of the 7 major programs you likely qualify for</span>
+            </li>
+            <li class="flex items-start gap-2">
+              <span class="text-milwaukee-red font-bold">✓</span>
+              <span><strong>Side-by-side comparison</strong> - Dealer fees, credit requirements, loan limits for each platform</span>
+            </li>
+            <li class="flex items-start gap-2">
+              <span class="text-milwaukee-red font-bold">✓</span>
+              <span><strong>ROI projections</strong> - Calculate revenue impact of offering customer financing</span>
+            </li>
+            <li class="flex items-start gap-2">
+              <span class="text-milwaukee-red font-bold">✓</span>
+              <span><strong>Next steps roadmap</strong> - Exactly what to do to get approved and start offering financing</span>
+            </li>
+          </ul>
+
+          <div class="mt-4 pt-4 border-t border-milwaukee-red border-opacity-30">
+            <p class="text-sm text-gray-600">
+              <strong>Covers:</strong> GreenSky, Synchrony, PowerPay, Wisetack, Enhancify, Service Finance (SFC), and FTL Finance
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <form id="email-form" class="space-y-4">
+        <input type="hidden" name="access_key" value="d7496202-b3c4-47ec-b415-3f32b8747985" />
+        <input type="hidden" name="subject" value="Platform Matcher Tool - VetMG" />
+        <input type="checkbox" name="botcheck" class="hidden" style="display: none;" />
+
+        <div>
+          <label for="gate-name" class="block text-sm font-semibold mb-2 text-gray-700">Your Name</label>
+          <input
+            type="text"
+            id="gate-name"
+            name="name"
+            required
+            class="w-full p-3 border border-gray-300 rounded focus:border-milwaukee-red focus:ring-2 focus:ring-milwaukee-red focus:outline-none"
+            placeholder="John Smith"
+          />
+        </div>
+
+        <div>
+          <label for="gate-email" class="block text-sm font-semibold mb-2 text-gray-700">Email Address</label>
+          <input
+            type="email"
+            id="gate-email"
+            name="email"
+            required
+            class="w-full p-3 border border-gray-300 rounded focus:border-milwaukee-red focus:ring-2 focus:ring-milwaukee-red focus:outline-none"
+            placeholder="you@contractingco.com"
+          />
+        </div>
+
+        <div>
+          <label for="gate-business" class="block text-sm font-semibold mb-2 text-gray-700">Business Name</label>
+          <input
+            type="text"
+            id="gate-business"
+            name="business"
+            required
+            class="w-full p-3 border border-gray-300 rounded focus:border-milwaukee-red focus:ring-2 focus:ring-milwaukee-red focus:outline-none"
+            placeholder="Your Contracting Company"
+          />
+        </div>
+
+        <div>
+          <label for="gate-industry" class="block text-sm font-semibold mb-2 text-gray-700">Primary Industry</label>
+          <select
+            id="gate-industry"
+            name="industry"
+            required
+            class="w-full p-3 border border-gray-300 rounded focus:border-milwaukee-red focus:ring-2 focus:ring-milwaukee-red focus:outline-none"
+          >
+            <option value="">Select your industry</option>
+            <option value="HVAC">HVAC</option>
+            <option value="Roofing">Roofing</option>
+            <option value="Remodeling">Kitchen & Bath Remodeling</option>
+            <option value="Landscaping">Landscaping</option>
+            <option value="Flooring">Flooring</option>
+            <option value="Solar">Solar Installation</option>
+            <option value="Pool">Pool Installation</option>
+            <option value="Electrical">Electrical</option>
+            <option value="Plumbing">Plumbing</option>
+            <option value="Windows">Windows & Doors</option>
+            <option value="Siding">Siding</option>
+            <option value="General">General Contractor</option>
+            <option value="Other">Other Home Improvement</option>
+          </select>
+        </div>
+
+        <button
+          type="submit"
+          class="w-full bg-milwaukee-red text-white py-4 px-6 rounded font-bold text-lg hover:bg-red-700 transition-colors focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-milwaukee-red"
+        >
+          Get My Platform Matches →
+        </button>
+
+        <p class="text-sm text-gray-500 text-center">
+          We'll email you a copy of your results. No spam, unsubscribe anytime.
+        </p>
+      </form>
+    </div>
+  </div>
+
+  <!-- Platform Matcher Tool (shown after email submission) -->
+  <div id="matcher-tool" class="hidden">
+
+    <!-- Header -->
+    <div class="bg-milwaukee-black text-white py-8">
+      <div class="max-w-6xl mx-auto px-4">
+        <h1 class="text-3xl font-bold">Financing Platform Matcher</h1>
+        <p class="text-gray-300 mt-2">Discover which platforms you qualify for and compare their features</p>
+      </div>
+    </div>
+
+    <!-- Questionnaire Section -->
+    <div class="max-w-4xl mx-auto px-4 py-12">
+      <div class="bg-white rounded-lg shadow-lg p-8 mb-8">
+        <h2 class="text-2xl font-bold mb-6 text-gray-900">Answer These Questions About Your Business</h2>
+
+        <div class="space-y-6">
+
+          <!-- Question 1: Years in Business -->
+          <div>
+            <label class="block text-sm font-semibold mb-3 text-gray-700">
+              How long have you been in business?
+            </label>
+            <div class="space-y-2">
+              <label class="flex items-center p-3 border border-gray-300 rounded cursor-pointer hover:bg-gray-50">
+                <input type="radio" name="years" value="0-1" class="mr-3" />
+                <span>Less than 1 year</span>
+              </label>
+              <label class="flex items-center p-3 border border-gray-300 rounded cursor-pointer hover:bg-gray-50">
+                <input type="radio" name="years" value="1-2" class="mr-3" />
+                <span>1-2 years</span>
+              </label>
+              <label class="flex items-center p-3 border border-gray-300 rounded cursor-pointer hover:bg-gray-50">
+                <input type="radio" name="years" value="2-3" class="mr-3" />
+                <span>2-3 years</span>
+              </label>
+              <label class="flex items-center p-3 border border-gray-300 rounded cursor-pointer hover:bg-gray-50">
+                <input type="radio" name="years" value="3+" class="mr-3" />
+                <span>3+ years</span>
+              </label>
+            </div>
+          </div>
+
+          <!-- Question 2: Total Revenue To Date -->
+          <div>
+            <label class="block text-sm font-semibold mb-3 text-gray-700">
+              What's your total revenue to date since starting the business?
+            </label>
+            <p class="text-xs text-gray-600 mb-3">
+              (This is cumulative revenue over your business lifetime, not annual. For example: 3 years × $400k/year = $1.2M total revenue to date)
+            </p>
+            <div class="space-y-2">
+              <label class="flex items-center p-3 border border-gray-300 rounded cursor-pointer hover:bg-gray-50">
+                <input type="radio" name="revenue" value="<500k" class="mr-3" />
+                <span>Less than $500,000 total</span>
+              </label>
+              <label class="flex items-center p-3 border border-gray-300 rounded cursor-pointer hover:bg-gray-50">
+                <input type="radio" name="revenue" value="500k-1m" class="mr-3" />
+                <span>$500,000 - $1 million total</span>
+              </label>
+              <label class="flex items-center p-3 border border-gray-300 rounded cursor-pointer hover:bg-gray-50">
+                <input type="radio" name="revenue" value="1m-2m" class="mr-3" />
+                <span>$1 million - $2 million total</span>
+              </label>
+              <label class="flex items-center p-3 border border-gray-300 rounded cursor-pointer hover:bg-gray-50">
+                <input type="radio" name="revenue" value="2m+" class="mr-3" />
+                <span>$2 million+ total</span>
+              </label>
+            </div>
+          </div>
+
+          <!-- Question 3: Credit Profile -->
+          <div>
+            <label class="block text-sm font-semibold mb-3 text-gray-700">
+              How would you describe your business/personal credit?
+            </label>
+            <div class="space-y-2">
+              <label class="flex items-center p-3 border border-gray-300 rounded cursor-pointer hover:bg-gray-50">
+                <input type="radio" name="credit" value="excellent" class="mr-3" />
+                <span>Excellent (700+ FICO)</span>
+              </label>
+              <label class="flex items-center p-3 border border-gray-300 rounded cursor-pointer hover:bg-gray-50">
+                <input type="radio" name="credit" value="good" class="mr-3" />
+                <span>Good (650-699 FICO)</span>
+              </label>
+              <label class="flex items-center p-3 border border-gray-300 rounded cursor-pointer hover:bg-gray-50">
+                <input type="radio" name="credit" value="fair" class="mr-3" />
+                <span>Fair (600-649 FICO)</span>
+              </label>
+              <label class="flex items-center p-3 border border-gray-300 rounded cursor-pointer hover:bg-gray-50">
+                <input type="radio" name="credit" value="poor" class="mr-3" />
+                <span>Below 600 or uncertain</span>
+              </label>
+            </div>
+          </div>
+
+          <!-- Question 4: Website -->
+          <div>
+            <label class="block text-sm font-semibold mb-3 text-gray-700">
+              Do you have a professional website?
+            </label>
+            <div class="space-y-2">
+              <label class="flex items-center p-3 border border-gray-300 rounded cursor-pointer hover:bg-gray-50">
+                <input type="radio" name="website" value="yes-pro" class="mr-3" />
+                <span>Yes, professionally designed</span>
+              </label>
+              <label class="flex items-center p-3 border border-gray-300 rounded cursor-pointer hover:bg-gray-50">
+                <input type="radio" name="website" value="yes-diy" class="mr-3" />
+                <span>Yes, DIY (Wix, Squarespace, etc.)</span>
+              </label>
+              <label class="flex items-center p-3 border border-gray-300 rounded cursor-pointer hover:bg-gray-50">
+                <input type="radio" name="website" value="no" class="mr-3" />
+                <span>No website currently</span>
+              </label>
+            </div>
+          </div>
+
+          <!-- Question 5: Average Project Size -->
+          <div>
+            <label class="block text-sm font-semibold mb-3 text-gray-700">
+              What's your typical project size?
+            </label>
+            <div class="space-y-2">
+              <label class="flex items-center p-3 border border-gray-300 rounded cursor-pointer hover:bg-gray-50">
+                <input type="radio" name="project-size" value="<1k" class="mr-3" />
+                <span>Under $1,000 (repairs, small jobs)</span>
+              </label>
+              <label class="flex items-center p-3 border border-gray-300 rounded cursor-pointer hover:bg-gray-50">
+                <input type="radio" name="project-size" value="1k-5k" class="mr-3" />
+                <span>$1,000 - $5,000</span>
+              </label>
+              <label class="flex items-center p-3 border border-gray-300 rounded cursor-pointer hover:bg-gray-50">
+                <input type="radio" name="project-size" value="5k-15k" class="mr-3" />
+                <span>$5,000 - $15,000</span>
+              </label>
+              <label class="flex items-center p-3 border border-gray-300 rounded cursor-pointer hover:bg-gray-50">
+                <input type="radio" name="project-size" value="15k+" class="mr-3" />
+                <span>$15,000+</span>
+              </label>
+            </div>
+          </div>
+
+        </div>
+
+        <button
+          id="calculate-btn"
+          class="w-full mt-8 bg-milwaukee-red text-white py-4 px-6 rounded font-bold text-lg hover:bg-red-700 transition-colors"
+          onclick="calculateMatches()"
+        >
+          Show My Platform Matches
+        </button>
+      </div>
+    </div>
+
+    <!-- Results Section (hidden until calculation) -->
+    <div id="results-section" class="hidden">
+
+      <!-- Summary Stats -->
+      <div class="bg-milwaukee-gray py-12">
+        <div class="max-w-6xl mx-auto px-4">
+          <h2 class="text-3xl font-bold text-center mb-8 text-gray-900">Your Platform Match Results</h2>
+
+          <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
+            <div class="bg-white p-6 rounded-lg shadow text-center">
+              <div class="text-4xl font-bold text-green-600" id="qualified-count">0</div>
+              <div class="text-gray-600 mt-2">Likely Qualified</div>
+            </div>
+            <div class="bg-white p-6 rounded-lg shadow text-center">
+              <div class="text-4xl font-bold text-yellow-600" id="maybe-count">0</div>
+              <div class="text-gray-600 mt-2">Possibly Qualified</div>
+            </div>
+            <div class="bg-white p-6 rounded-lg shadow text-center">
+              <div class="text-4xl font-bold text-red-600" id="unlikely-count">0</div>
+              <div class="text-gray-600 mt-2">Unlikely Match</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Gap Analysis Alerts -->
+
+      <!-- Alert: No Website -->
+      <div id="gap-alert-website" class="hidden bg-milwaukee-red py-12">
+        <div class="max-w-4xl mx-auto px-4">
+          <div class="bg-white rounded-lg shadow-xl p-8">
+            <div class="flex items-start gap-4 mb-6">
+              <svg class="w-12 h-12 text-milwaukee-red flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
+                <path fill-rule="evenodd" d="M8.257 3.099c.765-1.36 2.722-1.36 3.486 0l5.58 9.92c.75 1.334-.213 2.98-1.742 2.98H4.42c-1.53 0-2.493-1.646-1.743-2.98l5.58-9.92zM11 13a1 1 0 11-2 0 1 1 0 012 0zm-1-8a1 1 0 00-1 1v3a1 1 0 002 0V6a1 1 0 00-1-1z" clip-rule="evenodd"/>
+              </svg>
+              <div class="flex-1">
+                <h3 class="text-2xl font-bold text-gray-900 mb-3">
+                  Critical Gap Detected: No Professional Website
+                </h3>
+                <p class="text-lg text-gray-700 mb-4">
+                  <strong>Most financing platforms require a professional website.</strong> Without one, you're automatically disqualified from GreenSky, Synchrony, and Service Finance.
+                </p>
+                <div class="bg-yellow-50 border-l-4 border-yellow-400 p-4 mb-6">
+                  <p class="text-sm text-gray-800">
+                    <strong>The Good News:</strong> This is the easiest gap to fix. A professional website can be built in 2-3 weeks, and you own it outright (no monthly fees).
+                  </p>
+                </div>
+
+                <div class="grid md:grid-cols-2 gap-6 mb-6">
+                  <div>
+                    <h4 class="font-bold text-gray-900 mb-2">What You're Missing Without a Website:</h4>
+                    <ul class="space-y-2 text-sm text-gray-700">
+                      <li class="flex items-start gap-2">
+                        <span class="text-red-600">✗</span>
+                        <span>GreenSky (requires professional site)</span>
+                      </li>
+                      <li class="flex items-start gap-2">
+                        <span class="text-red-600">✗</span>
+                        <span>Service Finance (website required)</span>
+                      </li>
+                      <li class="flex items-start gap-2">
+                        <span class="text-red-600">✗</span>
+                        <span>Customer trust and credibility checks</span>
+                      </li>
+                      <li class="flex items-start gap-2">
+                        <span class="text-red-600">✗</span>
+                        <span>Place to integrate financing widgets and applications</span>
+                      </li>
+                    </ul>
+                  </div>
+                  <div>
+                    <h4 class="font-bold text-gray-900 mb-2">What Changes With a Website:</h4>
+                    <ul class="space-y-2 text-sm text-gray-700">
+                      <li class="flex items-start gap-2">
+                        <span class="text-green-600">✓</span>
+                        <span>Qualify for premium platforms (GreenSky, SFC)</span>
+                      </li>
+                      <li class="flex items-start gap-2">
+                        <span class="text-green-600">✓</span>
+                        <span>Customers find you credible and legitimate</span>
+                      </li>
+                      <li class="flex items-start gap-2">
+                        <span class="text-green-600">✓</span>
+                        <span>Integration point for financing applications</span>
+                      </li>
+                      <li class="flex items-start gap-2">
+                        <span class="text-green-600">✓</span>
+                        <span>Display trust signals (licenses, insurance, reviews)</span>
+                      </li>
+                    </ul>
+                  </div>
+                </div>
+
+                <div class="bg-milwaukee-black text-white p-6 rounded-lg">
+                  <h4 class="text-xl font-bold mb-3">Get Financing-Ready</h4>
+                  <p class="text-gray-300 mb-4">
+                    Our <strong>Starter Package ($3,500)</strong> gets you a professional, mobile-responsive website that meets lender requirements. You own it outright—no monthly fees, no lock-in, 1 year hosting included.
+                  </p>
+                  <div class="grid md:grid-cols-2 gap-4 mb-6 text-sm">
+                    <div>
+                      <strong>Included:</strong>
+                      <ul class="mt-2 space-y-1 text-gray-300">
+                        <li>• One-page professional website</li>
+                        <li>• Mobile responsive design</li>
+                        <li>• 1 year hosting ($120/year after)</li>
+                        <li>• Financing widget integration ready</li>
+                      </ul>
+                    </div>
+                    <div>
+                      <strong>Plus:</strong>
+                      <ul class="mt-2 space-y-1 text-gray-300">
+                        <li>• Trust signals setup</li>
+                        <li>• Lender qualification checklist</li>
+                        <li>• Financing partner matching guidance</li>
+                        <li>• Full file delivery (you own it)</li>
+                      </ul>
+                    </div>
+                  </div>
+                  <div class="flex flex-col sm:flex-row gap-4">
+                    <a href="/#pricing" class="flex-1 bg-milwaukee-red text-white text-center py-3 px-6 rounded font-bold hover:bg-red-700 transition-colors">
+                      View Pricing & Packages
+                    </a>
+                    <a href="/#contact" class="flex-1 bg-white text-milwaukee-black text-center py-3 px-6 rounded font-bold hover:bg-gray-100 transition-colors">
+                      Talk to Us
+                    </a>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Alert: Revenue Too Low for Premium Platforms -->
+      <div id="gap-alert-revenue" class="hidden bg-yellow-50 py-12 border-t-4 border-yellow-400">
+        <div class="max-w-4xl mx-auto px-4">
+          <div class="bg-white rounded-lg shadow-lg p-8">
+            <h3 class="text-2xl font-bold text-gray-900 mb-4">
+              📊 Revenue Gap: You're Locked Out of Premium Platforms
+            </h3>
+            <p class="text-lg text-gray-700 mb-4">
+              <strong>GreenSky requires $1M+ in total revenue to date.</strong> With your current cumulative revenue, you won't qualify for their premium financing programs yet.
+            </p>
+            <div class="bg-blue-50 border-l-4 border-blue-500 p-4 mb-6">
+              <p class="text-sm text-gray-800">
+                <strong>The Good News:</strong> PowerPay, Wisetack, FTL Finance, and Enhancify have NO revenue minimums. You can start offering financing now and grow into GreenSky later.
+              </p>
+            </div>
+            <div class="grid md:grid-cols-2 gap-6">
+              <div>
+                <h4 class="font-bold text-gray-900 mb-3">Start With These (No Revenue Minimum):</h4>
+                <ul class="space-y-2 text-sm">
+                  <li class="flex items-start gap-2">
+                    <span class="text-green-600 font-bold">✓</span>
+                    <span><strong>PowerPay:</strong> 0% dealer fee, accepts startups</span>
+                  </li>
+                  <li class="flex items-start gap-2">
+                    <span class="text-green-600 font-bold">✓</span>
+                    <span><strong>FTL Finance:</strong> 0% dealer fee, HVAC specialist</span>
+                  </li>
+                  <li class="flex items-start gap-2">
+                    <span class="text-green-600 font-bold">✓</span>
+                    <span><strong>Wisetack:</strong> 3.9% fee, fast approvals</span>
+                  </li>
+                  <li class="flex items-start gap-2">
+                    <span class="text-green-600 font-bold">✓</span>
+                    <span><strong>Enhancify:</strong> Annual subscription, no per-loan fees</span>
+                  </li>
+                </ul>
+              </div>
+              <div>
+                <h4 class="font-bold text-gray-900 mb-3">Growth Path to GreenSky:</h4>
+                <ol class="space-y-2 text-sm list-decimal list-inside">
+                  <li>Start with PowerPay/FTL (no barriers)</li>
+                  <li>Offer financing on every eligible job</li>
+                  <li>Track cumulative revenue (not just annual)</li>
+                  <li>Apply to GreenSky once you hit $1M total revenue to date</li>
+                  <li>Now offer multiple platforms for customer choice</li>
+                </ol>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Platform Cards -->
+      <div class="max-w-6xl mx-auto px-4 py-12">
+        <div id="platform-results" class="space-y-6">
+          <!-- Platform cards will be inserted here by JavaScript -->
+        </div>
+      </div>
+
+      <!-- ROI Calculator -->
+      <div class="bg-white py-12">
+        <div class="max-w-4xl mx-auto px-4">
+          <h2 class="text-3xl font-bold text-center mb-8 text-gray-900">Calculate Your ROI from Offering Financing</h2>
+
+          <div class="bg-milwaukee-gray p-8 rounded-lg">
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
+              <div>
+                <label class="block text-sm font-semibold mb-2">Current Annual Revenue</label>
+                <input
+                  type="number"
+                  id="roi-revenue"
+                  class="w-full p-3 border border-gray-300 rounded"
+                  placeholder="500000"
+                />
+              </div>
+              <div>
+                <label class="block text-sm font-semibold mb-2">Average Project Size</label>
+                <input
+                  type="number"
+                  id="roi-project"
+                  class="w-full p-3 border border-gray-300 rounded"
+                  placeholder="5000"
+                />
+              </div>
+            </div>
+
+            <button
+              onclick="calculateROI()"
+              class="w-full bg-milwaukee-red text-white py-3 px-6 rounded font-bold hover:bg-red-700 transition-colors"
+            >
+              Calculate Revenue Impact
+            </button>
+
+            <div id="roi-results" class="hidden mt-8 p-6 bg-white rounded-lg">
+              <h3 class="text-xl font-bold mb-4 text-gray-900">Potential Impact Estimate</h3>
+              <div class="space-y-3">
+                <div class="flex justify-between items-center">
+                  <span class="text-gray-700">Additional Jobs Closed (est. 35%):</span>
+                  <span class="font-bold text-lg" id="additional-jobs">0</span>
+                </div>
+                <div class="flex justify-between items-center">
+                  <span class="text-gray-700">Larger Project Sizes (est. 25%):</span>
+                  <span class="font-bold text-lg" id="larger-projects">$0</span>
+                </div>
+                <div class="flex justify-between items-center pt-3 border-t border-gray-300">
+                  <span class="text-gray-900 font-semibold">Potential Additional Revenue:</span>
+                  <span class="font-bold text-2xl text-green-600" id="additional-revenue">$0</span>
+                </div>
+              </div>
+
+              <div class="mt-6 p-4 bg-yellow-50 rounded border-l-4 border-yellow-400">
+                <p class="text-sm text-gray-700 mb-2">
+                  <strong>Important:</strong> These are conservative estimates for illustrative purposes. Actual results vary widely based on your market, customer base, and how you present financing options.
+                </p>
+                <p class="text-sm text-gray-700">
+                  <strong>What we know:</strong> Financing enables customers who couldn't afford to pay cash upfront. It also allows upselling to higher-quality materials or larger project scopes when customers can spread payments over time.
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Next Steps -->
+      <div class="bg-milwaukee-black text-white py-12">
+        <div class="max-w-4xl mx-auto px-4">
+          <h2 class="text-3xl font-bold text-center mb-8">Ready to Get Started?</h2>
+
+          <div class="space-y-4 mb-8">
+            <div class="bg-white bg-opacity-10 p-6 rounded-lg">
+              <h3 class="text-xl font-bold mb-2">1. Fix Any Gaps First</h3>
+              <p class="text-gray-300">
+                If you're not qualified for your preferred platforms yet, address the gaps (professional website, time in business, revenue growth, etc.)
+              </p>
+            </div>
+
+            <div class="bg-white bg-opacity-10 p-6 rounded-lg">
+              <h3 class="text-xl font-bold mb-2">2. Apply to Multiple Platforms</h3>
+              <p class="text-gray-300">
+                Don't put all eggs in one basket. Apply to 2-3 platforms that match your profile to maximize approval odds and give customers options.
+              </p>
+            </div>
+
+            <div class="bg-white bg-opacity-10 p-6 rounded-lg">
+              <h3 class="text-xl font-bold mb-2">3. Train Your Team</h3>
+              <p class="text-gray-300">
+                Make sure everyone who talks to customers knows how to present financing options and can walk customers through the application process.
+              </p>
+            </div>
+          </div>
+
+          <div class="text-center">
+            <a
+              href="/"
+              class="inline-block bg-milwaukee-red text-white px-8 py-4 rounded font-bold text-lg hover:bg-red-700 transition-colors"
+            >
+              Need Help Getting Financing-Ready? →
+            </a>
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+  </div>
+
+  <script>
+    // Check if user has already submitted email
+    document.addEventListener('DOMContentLoaded', () => {
+      const hasSubmittedEmail = localStorage.getItem('vetmg_platform_matcher_submitted');
+
+      if (hasSubmittedEmail === 'true') {
+        // Skip email gate, go straight to tool
+        document.getElementById('email-gate').classList.add('hidden');
+        document.getElementById('matcher-tool').classList.remove('hidden');
+      }
+    });
+
+    // Platform data with detailed qualification criteria
+    const platforms = {
+      greensky: {
+        name: 'GreenSky (Goldman Sachs)',
+        tier: 'Premium',
+        dealerFee: '2-20%',
+        customerCredit: '650+ FICO',
+        loanRange: '$1,000 - $100,000',
+        bestFor: 'Established contractors with high-credit customers',
+        requirements: {
+          yearsMin: 2,
+          revenueMin: 1000000,
+          creditMin: 'good',
+          websiteRequired: true
+        },
+        pros: [
+          'Up to $100,000 loans',
+          'Wide range of promotional plans (0% APR, deferred interest)',
+          'Backed by Goldman Sachs',
+          'Fast funding (2-3 days)',
+          'National brand recognition'
+        ],
+        cons: [
+          'Strict qualification (2+ years, $1M+ revenue)',
+          'Dealer fees can be 5-20% on promotional plans',
+          'Requires good customer credit (650+ FICO)'
+        ],
+        compliance: 'Must complete training program. Deferred interest disclosures required.'
+      },
+      synchrony: {
+        name: 'Synchrony Home',
+        tier: 'Premium',
+        dealerFee: '0-6%',
+        customerCredit: '640+ FICO',
+        loanRange: '$299 - $10,000+',
+        bestFor: 'Revolving credit card model for repeat customers',
+        requirements: {
+          yearsMin: 0,
+          revenueMin: 0,
+          creditMin: 'fair',
+          websiteRequired: false
+        },
+        pros: [
+          'No dealer fees on standard purchases',
+          'Promotional plans: 2-6% fee for 6-12 month 0% APR',
+          'Revolving credit (customers can reuse)',
+          'Fast approval (often same-day)',
+          'No enrollment fee'
+        ],
+        cons: [
+          'Lower credit limits than installment loans',
+          'High customer APR (29.99%) after promo',
+          'Credit tightening (many approvals need 700+ FICO)',
+          'Deferred interest model (retroactive interest)'
+        ],
+        compliance: 'Must provide deferred interest disclosures. Cannot surcharge for credit use.'
+      },
+      powerpay: {
+        name: 'PowerPay',
+        tier: 'Mid-Market',
+        dealerFee: '0%',
+        customerCredit: '600+ FICO (down to 500)',
+        loanRange: '$500 - $100,000',
+        bestFor: 'Contractors who want no dealer fees',
+        requirements: {
+          yearsMin: 0,
+          revenueMin: 0,
+          creditMin: 'fair',
+          websiteRequired: false
+        },
+        pros: [
+          '0% dealer fee on standard loans (5, 10, 15-year terms)',
+          'No enrollment or monthly fees',
+          'Long terms up to 15 years (low monthly payments)',
+          'Accepts 600+ FICO (even 500+ on some programs)',
+          'Fixed APR loans (8.99-14.99%), no deferred interest'
+        ],
+        cons: [
+          'Customer pays interest (8.99-14.99% APR)',
+          'Optional promotional plans have fees (small)',
+          'Not ideal for customers wanting 0% APR'
+        ],
+        compliance: 'No special compliance beyond standard lending. Contractor pays nothing unless using optional promos.'
+      },
+      wisetack: {
+        name: 'Wisetack',
+        tier: 'Tech-Forward',
+        dealerFee: '3.9%',
+        customerCredit: '540+ FICO',
+        loanRange: '$500 - $15,000',
+        bestFor: 'Service calls and smaller projects (<$15k)',
+        requirements: {
+          yearsMin: 0,
+          revenueMin: 0,
+          creditMin: 'poor',
+          websiteRequired: false
+        },
+        pros: [
+          'Flat 3.9% dealer fee',
+          'Integrates with field service software',
+          '85% approval rate (540+ FICO)',
+          '3-month 0% APR included at no extra cost',
+          'Instant approvals, mobile-friendly',
+          'No late fees or prepayment penalties for customers'
+        ],
+        cons: [
+          'Loan limit typically $15,000 (not for large projects)',
+          'Extended 0% APR (6, 12, 24 months) costs 4.9-9.9% dealer fee',
+          'High APR for subprime (up to 35.9%)'
+        ],
+        compliance: 'Fully online process. Cannot promise specific APR to customers before they prequalify.'
+      },
+      enhancify: {
+        name: 'Enhancify (Marketplace)',
+        tier: 'Marketplace',
+        dealerFee: '0% (subscription model)',
+        customerCredit: '550+ FICO',
+        loanRange: '$1,000 - $200,000',
+        bestFor: 'Contractors who want no per-loan fees and broad credit coverage',
+        requirements: {
+          yearsMin: 0,
+          revenueMin: 0,
+          creditMin: 'fair',
+          websiteRequired: false
+        },
+        pros: [
+          'No per-loan dealer fees (annual subscription instead)',
+          'Access to 30+ lenders (one app, multiple offers)',
+          'Up to $200,000 loans available',
+          'Earn commission per funded loan ($50-650)',
+          '~90% approval rate (550+ FICO)',
+          'Includes personal loans, credit cards, HELOC options'
+        ],
+        cons: [
+          'Annual subscription fee ($1,149-$4,999/year)',
+          'Loan funds go to customer (not directly to contractor)',
+          'Customers need to navigate multiple offers'
+        ],
+        compliance: 'Licensed loan broker. Enhancify handles regulatory compliance. Do not modify loan terms.'
+      },
+      sfc: {
+        name: 'Service Finance (SFC by Truist)',
+        tier: 'Home Improvement Specialist',
+        dealerFee: '0-15%',
+        customerCredit: '580+ FICO',
+        loanRange: '$1,000 - $65,000',
+        bestFor: 'HVAC and home improvement with wide credit spectrum',
+        requirements: {
+          yearsMin: 1,
+          revenueMin: 0,
+          creditMin: 'fair',
+          websiteRequired: true
+        },
+        pros: [
+          'Over 50 loan programs (something for everyone)',
+          'FHA Title I loans (government-backed for 580+ FICO)',
+          'Stage funding (customer doesn\'t pay until job done)',
+          '24-48 hour funding',
+          'No merchant, ACH, or activation fees',
+          '90%+ approval using all programs'
+        ],
+        cons: [
+          'Dealer fees on promotional plans (0-15%)',
+          'More paperwork than fintech lenders',
+          'Prefers 1+ year in business',
+          'Website required'
+        ],
+        compliance: 'Must provide completion certificates. Training required. Use approved marketing materials.'
+      },
+      ftl: {
+        name: 'FTL Finance',
+        tier: 'Ultra-Accessible',
+        dealerFee: '0%',
+        customerCredit: 'No minimum (considers all credit)',
+        loanRange: '$300 - $25,000',
+        bestFor: 'HVAC contractors and subprime/emergency financing',
+        requirements: {
+          yearsMin: 0,
+          revenueMin: 0,
+          creditMin: 'poor',
+          websiteRequired: false
+        },
+        pros: [
+          'No minimum credit score (manual review)',
+          '80% approval rate (even deep subprime)',
+          '0% dealer fee on standard loans',
+          'Minimum loan $300 (lowest in industry)',
+          'Fast approval (often instant)',
+          'Optional rate buydowns available'
+        ],
+        cons: [
+          'Higher customer APR (16.99%+ for subprime)',
+          'Smaller loan limits ($25k max typically)',
+          'Optional promotional plans have buydown fees'
+        ],
+        compliance: 'Simple process. No special requirements beyond standard contracting licenses.'
+      }
+    };
+
+    // Email gate form submission
+    document.getElementById('email-form').addEventListener('submit', async (e) => {
+      e.preventDefault();
+      const formData = new FormData(e.target);
+
+      try {
+        const response = await fetch('https://api.web3forms.com/submit', {
+          method: 'POST',
+          body: formData
+        });
+
+        if (response.ok) {
+          // Save to localStorage so they don't have to fill it out again
+          localStorage.setItem('vetmg_platform_matcher_submitted', 'true');
+
+          // Hide gate, show tool
+          document.getElementById('email-gate').classList.add('hidden');
+          document.getElementById('matcher-tool').classList.remove('hidden');
+          document.getElementById('matcher-tool').classList.add('fade-in');
+          window.scrollTo(0, 0);
+        }
+      } catch (error) {
+        alert('Something went wrong. Please try again or call us at (502) 240-9897');
+      }
+    });
+
+    // Calculate platform matches
+    function calculateMatches() {
+      const years = document.querySelector('input[name="years"]:checked')?.value;
+      const revenue = document.querySelector('input[name="revenue"]:checked')?.value;
+      const credit = document.querySelector('input[name="credit"]:checked')?.value;
+      const website = document.querySelector('input[name="website"]:checked')?.value;
+      const projectSize = document.querySelector('input[name="project-size"]:checked')?.value;
+
+      if (!years || !revenue || !credit || !website || !projectSize) {
+        alert('Please answer all questions');
+        return;
+      }
+
+      // Convert answers to criteria
+      const criteria = {
+        yearsInBusiness: years === '0-1' ? 0.5 : years === '1-2' ? 1.5 : years === '2-3' ? 2.5 : 3.5,
+        totalRevenueToDate: revenue === '<500k' ? 400000 : revenue === '500k-1m' ? 750000 : revenue === '1m-2m' ? 1500000 : 2500000,
+        creditRating: credit,
+        hasWebsite: website === 'yes-pro' || website === 'yes-diy',
+        avgProjectSize: projectSize
+      };
+
+      // Show gap alerts based on criteria
+
+      // Website gap
+      if (website === 'no') {
+        document.getElementById('gap-alert-website').classList.remove('hidden');
+      } else {
+        document.getElementById('gap-alert-website').classList.add('hidden');
+      }
+
+      // Revenue gap (excludes from GreenSky)
+      if (criteria.totalRevenueToDate < 1000000) {
+        document.getElementById('gap-alert-revenue').classList.remove('hidden');
+      } else {
+        document.getElementById('gap-alert-revenue').classList.add('hidden');
+      }
+
+      // Evaluate each platform
+      const results = {};
+
+      Object.keys(platforms).forEach(key => {
+        const platform = platforms[key];
+        let score = 'qualified';
+
+        // Check years requirement
+        if (criteria.yearsInBusiness < platform.requirements.yearsMin) {
+          if (platform.requirements.yearsMin - criteria.yearsInBusiness > 1) {
+            score = 'unlikely';
+          } else {
+            score = 'maybe';
+          }
+        }
+
+        // Check revenue requirement
+        if (criteria.totalRevenueToDate < platform.requirements.revenueMin) {
+          score = 'unlikely';
+        }
+
+        // Check credit requirement
+        const creditMap = { 'excellent': 4, 'good': 3, 'fair': 2, 'poor': 1 };
+        const reqCreditMap = { 'excellent': 4, 'good': 3, 'fair': 2, 'poor': 1 };
+        if (creditMap[criteria.creditRating] < reqCreditMap[platform.requirements.creditMin]) {
+          if (score === 'qualified') score = 'maybe';
+          if (creditMap[criteria.creditRating] < reqCreditMap[platform.requirements.creditMin] - 1) {
+            score = 'unlikely';
+          }
+        }
+
+        // Check website requirement
+        if (platform.requirements.websiteRequired && !criteria.hasWebsite) {
+          if (score === 'qualified') score = 'maybe';
+        }
+
+        results[key] = {
+          ...platform,
+          matchStatus: score
+        };
+      });
+
+      // Display results
+      displayResults(results);
+
+      // Show results section
+      document.getElementById('results-section').classList.remove('hidden');
+      document.getElementById('results-section').scrollIntoView({ behavior: 'smooth' });
+    }
+
+    function displayResults(results) {
+      const container = document.getElementById('platform-results');
+      container.innerHTML = '';
+
+      let qualifiedCount = 0;
+      let maybeCount = 0;
+      let unlikelyCount = 0;
+
+      // Sort by match status (qualified first)
+      const sortedResults = Object.entries(results).sort((a, b) => {
+        const order = { 'qualified': 0, 'maybe': 1, 'unlikely': 2 };
+        return order[a[1].matchStatus] - order[b[1].matchStatus];
+      });
+
+      sortedResults.forEach(([key, platform]) => {
+        if (platform.matchStatus === 'qualified') qualifiedCount++;
+        if (platform.matchStatus === 'maybe') maybeCount++;
+        if (platform.matchStatus === 'unlikely') unlikelyCount++;
+
+        const card = `
+          <div class="platform-card bg-white rounded-lg shadow-lg p-6">
+            <div class="flex justify-between items-start mb-4">
+              <div>
+                <h3 class="text-2xl font-bold text-gray-900">${platform.name}</h3>
+                <p class="text-sm text-gray-600">${platform.tier}</p>
+              </div>
+              <span class="badge-${platform.matchStatus}">
+                ${platform.matchStatus === 'qualified' ? 'LIKELY MATCH' : platform.matchStatus === 'maybe' ? 'POSSIBLE MATCH' : 'UNLIKELY MATCH'}
+              </span>
+            </div>
+
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-4 mb-6 pb-6 border-b border-gray-200">
+              <div>
+                <div class="text-xs text-gray-500 mb-1">Dealer Fee</div>
+                <div class="font-semibold">${platform.dealerFee}</div>
+              </div>
+              <div>
+                <div class="text-xs text-gray-500 mb-1">Customer Credit</div>
+                <div class="font-semibold">${platform.customerCredit}</div>
+              </div>
+              <div>
+                <div class="text-xs text-gray-500 mb-1">Loan Range</div>
+                <div class="font-semibold">${platform.loanRange}</div>
+              </div>
+              <div>
+                <div class="text-xs text-gray-500 mb-1">Best For</div>
+                <div class="font-semibold text-xs">${platform.tier}</div>
+              </div>
+            </div>
+
+            <div class="mb-4">
+              <div class="font-semibold mb-2 text-gray-900">Best For:</div>
+              <p class="text-sm text-gray-700">${platform.bestFor}</p>
+            </div>
+
+            <div class="grid md:grid-cols-2 gap-4">
+              <div>
+                <div class="font-semibold mb-2 text-green-700">Pros:</div>
+                <ul class="text-sm space-y-1">
+                  ${platform.pros.map(pro => `<li class="flex items-start gap-2"><span class="text-green-600">✓</span><span>${pro}</span></li>`).join('')}
+                </ul>
+              </div>
+              <div>
+                <div class="font-semibold mb-2 text-red-700">Cons:</div>
+                <ul class="text-sm space-y-1">
+                  ${platform.cons.map(con => `<li class="flex items-start gap-2"><span class="text-red-600">×</span><span>${con}</span></li>`).join('')}
+                </ul>
+              </div>
+            </div>
+
+            <div class="mt-4 pt-4 border-t border-gray-200">
+              <div class="text-xs text-gray-600">
+                <strong>Compliance:</strong> ${platform.compliance}
+              </div>
+            </div>
+          </div>
+        `;
+
+        container.innerHTML += card;
+      });
+
+      // Update summary counts
+      document.getElementById('qualified-count').textContent = qualifiedCount;
+      document.getElementById('maybe-count').textContent = maybeCount;
+      document.getElementById('unlikely-count').textContent = unlikelyCount;
+    }
+
+    function calculateROI() {
+      const revenue = parseFloat(document.getElementById('roi-revenue').value);
+      const avgProject = parseFloat(document.getElementById('roi-project').value);
+
+      if (!revenue || !avgProject) {
+        alert('Please enter both values');
+        return;
+      }
+
+      // Industry data: 35% more jobs, 25% larger projects
+      const additionalJobs = 0.35;
+      const largerProjects = 0.25;
+
+      const currentJobCount = revenue / avgProject;
+      const newJobCount = currentJobCount * (1 + additionalJobs);
+      const newAvgProject = avgProject * (1 + largerProjects);
+      const newRevenue = newJobCount * newAvgProject;
+      const additionalRevenue = newRevenue - revenue;
+
+      // Display results
+      document.getElementById('additional-jobs').textContent = Math.round(currentJobCount * additionalJobs);
+      document.getElementById('larger-projects').textContent = '$' + newAvgProject.toLocaleString();
+      document.getElementById('additional-revenue').textContent = '$' + additionalRevenue.toLocaleString();
+
+      document.getElementById('roi-results').classList.remove('hidden');
+    }
+  </script>
+
+  <!-- Sources Footer -->
+  <footer class="bg-gray-800 text-white py-8">
+    <div class="max-w-6xl mx-auto px-4">
+      <h3 class="text-lg font-bold mb-4">Data Sources & Disclosures</h3>
+
+      <div class="text-sm text-gray-300 space-y-3">
+        <div>
+          <strong class="text-white">Platform Requirements:</strong>
+          <ul class="ml-4 mt-1 space-y-1">
+            <li>• <strong>GreenSky:</strong> 2+ years in business, $1M+ <em>total revenue to date</em> (cumulative, not annual) - verified from contractor enrollment criteria</li>
+            <li>• <strong>Regions (formerly EnerBank):</strong> 3+ years in business, $500k+ total residential remodeling sales to date</li>
+            <li>• <strong>Synchrony, PowerPay, Wisetack, Enhancify, SFC, FTL:</strong> Requirements compiled from publicly available dealer application information and industry research</li>
+          </ul>
+        </div>
+
+        <div>
+          <strong class="text-white">Dealer Fees:</strong> Fee ranges are typical/standard but vary by specific promotional plan, customer credit tier, and contract terms. Always verify current fees directly with each platform.
+        </div>
+
+        <div>
+          <strong class="text-white">ROI Projections:</strong> Revenue impact estimates (35% more jobs, 25% larger projects) are conservative industry estimates for illustrative purposes only. Actual results vary widely based on market conditions, customer demographics, sales approach, and financing terms offered. These are not guaranteed outcomes.
+        </div>
+
+        <div>
+          <strong class="text-white">Matching Algorithm:</strong> Platform matches are calculated based on stated requirements from each financing company. "Likely Match" indicates you meet minimum stated requirements; "Possible Match" indicates you're close to requirements; "Unlikely Match" indicates significant gaps. Final approval is always at the lender's discretion.
+        </div>
+
+        <div class="pt-4 border-t border-gray-600">
+          <p class="text-xs text-gray-400">
+            This tool is provided for informational purposes only. VetMG Media LLC is not affiliated with, endorsed by, or acting as a representative of any financing platform mentioned. All platform names and trademarks are property of their respective owners. Financing approval, terms, and conditions are determined solely by each financing company. We recommend contacting platforms directly to verify current requirements and programs.
+          </p>
+        </div>
+
+        <div class="mt-4">
+          <a href="/" class="text-milwaukee-red hover:text-red-400">← Back to VetMG Home</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+</body>
+</html>

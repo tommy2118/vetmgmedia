@@ -1,0 +1,624 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <meta name="description" content="Free interactive checklist to assess if you're ready to qualify for contractor financing programs. Find out what you need in 10 minutes." />
+
+  <meta property="og:title" content="Financing-Ready Contractor Checklist - VetMG" />
+  <meta property="og:description" content="Free tool: Assess your qualification status for customer financing programs in 10 minutes." />
+  <meta property="og:type" content="website" />
+
+  <title>Financing-Ready Contractor Checklist - VetMG</title>
+
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            'milwaukee-red': '#E31837',
+            'milwaukee-black': '#333333',
+            'milwaukee-gray': '#F5F5F5',
+          },
+        },
+      },
+    }
+  </script>
+
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+
+  <style>
+    body {
+      font-family: 'Space Grotesk', sans-serif;
+    }
+
+    .hidden {
+      display: none;
+    }
+
+    .fade-in {
+      animation: fadeIn 0.5s ease-in;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(10px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+  </style>
+</head>
+<body class="bg-gray-50">
+
+  <!-- Email Gate (shown first) -->
+  <div id="email-gate" class="min-h-screen flex items-center justify-center p-4">
+    <div class="max-w-2xl w-full bg-white rounded-lg shadow-xl p-8">
+      <div class="text-center mb-8">
+        <h1 class="text-4xl font-bold text-gray-900 mb-4">
+          The Financing-Ready Contractor Checklist
+        </h1>
+        <p class="text-xl text-gray-600 mb-6">
+          Assess Your Qualification Status in 10 Minutes
+        </p>
+
+        <div class="bg-blue-50 border-l-4 border-blue-600 p-6 text-left mb-8">
+          <h2 class="font-bold text-lg mb-2 text-gray-900">What You'll Get (Free)</h2>
+          <ul class="space-y-2 text-gray-700">
+            <li class="flex items-start gap-2">
+              <span class="text-blue-600 font-bold">✓</span>
+              <span>Interactive checklist of all lender requirements</span>
+            </li>
+            <li class="flex items-start gap-2">
+              <span class="text-blue-600 font-bold">✓</span>
+              <span>Real-time gap analysis showing exactly what you're missing</span>
+            </li>
+            <li class="flex items-start gap-2">
+              <span class="text-blue-600 font-bold">✓</span>
+              <span>ROI calculator to see your potential revenue increase</span>
+            </li>
+            <li class="flex items-start gap-2">
+              <span class="text-blue-600 font-bold">✓</span>
+              <span>Priority roadmap with timeline to get financing-ready</span>
+            </li>
+          </ul>
+        </div>
+      </div>
+
+      <form id="email-form" class="space-y-4">
+        <input type="hidden" name="access_key" value="d7496202-b3c4-47ec-b415-3f32b8747985" />
+        <input type="hidden" name="subject" value="Financing Checklist Download - VetMG" />
+        <input type="checkbox" name="botcheck" class="hidden" style="display: none;" />
+
+        <div>
+          <label for="gate-name" class="block text-sm font-semibold mb-2 text-gray-700">Your Name</label>
+          <input
+            type="text"
+            id="gate-name"
+            name="name"
+            required
+            class="w-full p-3 border border-gray-300 rounded focus:border-blue-600 focus:ring-2 focus:ring-blue-600 focus:outline-none"
+            placeholder="John Smith"
+          />
+        </div>
+
+        <div>
+          <label for="gate-email" class="block text-sm font-semibold mb-2 text-gray-700">Email Address</label>
+          <input
+            type="email"
+            id="gate-email"
+            name="email"
+            required
+            class="w-full p-3 border border-gray-300 rounded focus:border-blue-600 focus:ring-2 focus:ring-blue-600 focus:outline-none"
+            placeholder="you@contractingco.com"
+          />
+        </div>
+
+        <div>
+          <label for="gate-business" class="block text-sm font-semibold mb-2 text-gray-700">Business Name (Optional)</label>
+          <input
+            type="text"
+            id="gate-business"
+            name="business"
+            class="w-full p-3 border border-gray-300 rounded focus:border-blue-600 focus:ring-2 focus:ring-blue-600 focus:outline-none"
+            placeholder="Your Contracting Company"
+          />
+        </div>
+
+        <button
+          type="submit"
+          class="w-full bg-blue-600 text-white py-4 px-6 rounded font-bold text-lg hover:bg-blue-700 transition-colors focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-600"
+        >
+          Get Free Checklist →
+        </button>
+
+        <p class="text-sm text-gray-500 text-center">
+          We'll email you a copy of your results. No spam, unsubscribe anytime.
+        </p>
+      </form>
+    </div>
+  </div>
+
+  <!-- Checklist Tool (shown after email submission) -->
+  <div id="checklist-tool" class="hidden">
+    <div class="max-w-4xl mx-auto bg-white p-8 my-8 shadow-lg rounded-lg">
+
+      <!-- Header -->
+      <div class="mb-12 border-b-4 border-blue-600 pb-8">
+        <div class="text-center mb-6">
+          <h1 class="text-4xl font-bold text-gray-900 mb-2">
+            The Financing-Ready Contractor Checklist
+          </h1>
+          <p class="text-xl text-gray-600">
+            Assess Your Qualification Status in 10 Minutes
+          </p>
+        </div>
+
+        <div class="bg-blue-50 border-l-4 border-blue-600 p-6 my-6">
+          <h2 class="font-bold text-lg mb-2 text-gray-900">Why This Matters</h2>
+          <p class="text-gray-700 mb-3">
+            Contractors who offer customer financing close <strong>30-40% more jobs</strong> and increase average project size by <strong>20-30%</strong>. But most financing companies have specific requirements you must meet.
+          </p>
+          <p class="text-gray-700">
+            Use this checklist to identify exactly where you stand and what you need to do to qualify.
+          </p>
+        </div>
+      </div>
+
+      <!-- Progress Overview -->
+      <div class="mb-8 bg-gray-50 p-6 rounded-lg">
+        <h2 class="text-2xl font-bold mb-4 text-gray-900">Your Progress</h2>
+        <div class="flex items-center gap-4 mb-4">
+          <div class="flex-1">
+            <div class="flex justify-between mb-2 text-sm">
+              <span class="font-semibold">Overall Completion</span>
+              <span class="font-semibold"><span id="checked-count">0</span> of <span id="total-count">0</span></span>
+            </div>
+            <div class="w-full bg-gray-200 rounded-full h-4">
+              <div
+                id="progress-bar"
+                class="bg-blue-600 h-4 rounded-full transition-all duration-300"
+                style="width: 0%"
+              ></div>
+            </div>
+          </div>
+          <div id="completion-percent" class="text-3xl font-bold text-blue-600">
+            0%
+          </div>
+        </div>
+
+        <div class="grid grid-cols-2 gap-4 mt-4">
+          <div class="bg-white p-4 rounded border-l-4 border-red-500">
+            <div class="text-sm text-gray-600 mb-1">Critical Items</div>
+            <div class="text-2xl font-bold text-gray-900">
+              <span id="critical-checked">0</span> / <span id="critical-total">0</span>
+            </div>
+          </div>
+          <div class="bg-white p-4 rounded border-l-4 border-green-500">
+            <div class="text-sm text-gray-600 mb-1">Estimated Timeline</div>
+            <div id="timeline-estimate" class="text-2xl font-bold text-gray-900">
+              ---
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Requirements Checklist -->
+      <div class="mb-8">
+        <h2 class="text-2xl font-bold mb-6 text-gray-900">
+          Lender Requirements Self-Assessment
+        </h2>
+        <p class="text-gray-600 mb-6">
+          Check off each item you currently have. Items marked with 🔴 are considered critical by most financing companies.
+        </p>
+
+        <div id="checklist-container"></div>
+      </div>
+
+      <!-- Gap Analysis -->
+      <div id="gap-analysis" class="mb-8"></div>
+
+      <!-- Priority Roadmap -->
+      <div class="mb-8 bg-blue-50 p-6 rounded-lg">
+        <h2 class="text-2xl font-bold mb-4 text-gray-900">
+          Your Priority Roadmap
+        </h2>
+
+        <div class="space-y-4">
+          <div class="bg-white p-4 rounded border-l-4 border-red-500">
+            <h3 class="font-bold mb-2 text-gray-900">PHASE 1: Critical Requirements (Weeks 1-2)</h3>
+            <p class="text-sm text-gray-600 mb-2">Without these, you won't qualify. Focus here first.</p>
+            <ul class="text-sm space-y-1 ml-4">
+              <li>✓ Professional website with mobile responsiveness</li>
+              <li>✓ Business licensing and insurance documentation</li>
+              <li>✓ Minimum business history and revenue verification</li>
+              <li>✓ Online reviews and social proof</li>
+            </ul>
+          </div>
+
+          <div class="bg-white p-4 rounded border-l-4 border-yellow-500">
+            <h3 class="font-bold mb-2 text-gray-900">PHASE 2: Trust Signals (Weeks 3-4)</h3>
+            <p class="text-sm text-gray-600 mb-2">These improve approval odds and terms.</p>
+            <ul class="text-sm space-y-1 ml-4">
+              <li>✓ Project portfolio with before/after photos</li>
+              <li>✓ Professional branding and contact information</li>
+              <li>✓ Business credit profile (DUNS, trade lines)</li>
+            </ul>
+          </div>
+
+          <div class="bg-white p-4 rounded border-l-4 border-green-500">
+            <h3 class="font-bold mb-2 text-gray-900">PHASE 3: Apply & Integrate (Week 5+)</h3>
+            <p class="text-sm text-gray-600 mb-2">Submit applications and add financing to your website.</p>
+            <ul class="text-sm space-y-1 ml-4">
+              <li>✓ Research and apply to 2-3 financing partners</li>
+              <li>✓ Integrate financing widgets on your website</li>
+              <li>✓ Train your sales team on offering financing</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <!-- ROI Calculator -->
+      <div class="mb-8 bg-green-50 p-6 rounded-lg">
+        <h2 class="text-2xl font-bold mb-4 text-gray-900">
+          What's It Worth? ROI Calculator
+        </h2>
+
+        <div class="grid md:grid-cols-2 gap-4 mb-4">
+          <div>
+            <label for="revenue" class="block text-sm font-semibold mb-2 text-gray-700">
+              Current Annual Revenue
+            </label>
+            <input
+              type="number"
+              id="revenue"
+              placeholder="250000"
+              class="w-full p-3 border border-gray-300 rounded"
+            />
+          </div>
+          <div>
+            <label for="avg-project" class="block text-sm font-semibold mb-2 text-gray-700">
+              Average Project Size
+            </label>
+            <input
+              type="number"
+              id="avg-project"
+              placeholder="5000"
+              class="w-full p-3 border border-gray-300 rounded"
+            />
+          </div>
+        </div>
+
+        <div id="roi-results" class="hidden bg-white p-6 rounded-lg border-2 border-green-500">
+          <h3 class="font-bold text-lg mb-4 text-gray-900">Your Projected Results</h3>
+          <div class="grid md:grid-cols-3 gap-4">
+            <div>
+              <div class="text-sm text-gray-600 mb-1">Current Revenue</div>
+              <div id="current-revenue" class="text-2xl font-bold text-gray-900"></div>
+            </div>
+            <div>
+              <div class="text-sm text-gray-600 mb-1">With Financing</div>
+              <div id="projected-revenue" class="text-2xl font-bold text-green-600"></div>
+            </div>
+            <div>
+              <div class="text-sm text-gray-600 mb-1">Additional Revenue</div>
+              <div id="additional-revenue" class="text-2xl font-bold text-green-700"></div>
+              <div id="percent-increase" class="text-sm text-green-600 font-semibold"></div>
+            </div>
+          </div>
+          <p class="text-sm text-gray-600 mt-4 italic">
+            Based on industry data: 35% more jobs closed, 25% larger average project size
+          </p>
+        </div>
+      </div>
+
+      <!-- Next Steps -->
+      <div class="mb-8 border-t-2 border-gray-200 pt-6">
+        <h2 class="text-2xl font-bold mb-4 text-gray-900">What's Next?</h2>
+
+        <div class="space-y-4">
+          <div class="bg-milwaukee-red text-white p-6 rounded-lg">
+            <h3 class="font-bold text-xl mb-2">Need Help Getting Financing-Ready?</h3>
+            <p class="mb-4">
+              VetMG specializes in helping contractors meet lender requirements. We build professional websites you own outright—no monthly fees, no lock-in.
+            </p>
+            <div class="space-y-2">
+              <div class="flex items-center gap-2">
+                <span class="font-semibold">📞 Call/Text:</span>
+                <a href="tel:5022409897" class="underline hover:opacity-80">(502) 240-9897</a>
+              </div>
+              <div class="flex items-center gap-2">
+                <span class="font-semibold">🌐 Website:</span>
+                <a href="/" class="underline hover:opacity-80">vetmgmedia.com</a>
+              </div>
+            </div>
+          </div>
+
+          <div class="bg-gray-50 p-6 rounded-lg">
+            <h3 class="font-bold text-lg mb-3 text-gray-900">DIY Resources</h3>
+            <ul class="space-y-2 text-gray-700">
+              <li class="flex items-start gap-2">
+                <span>📋</span>
+                <span><strong>Business Credit:</strong> Get your free DUNS number at dnb.com</span>
+              </li>
+              <li class="flex items-start gap-2">
+                <span>⭐</span>
+                <span><strong>Reviews:</strong> Set up Google Business Profile and ask recent customers</span>
+              </li>
+              <li class="flex items-start gap-2">
+                <span>📄</span>
+                <span><strong>Documentation:</strong> Gather licenses, insurance certificates, and tax returns</span>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <!-- Footer -->
+      <div class="text-center text-sm text-gray-500 border-t pt-6">
+        <p class="mb-2">
+          <strong>VetMG Media LLC</strong> | Veteran-Owned | Contractor-Focused
+        </p>
+        <p>
+          © 2025 VetMG Media LLC | This checklist is for informational purposes only.
+          Financing approval is subject to lender requirements and discretion.
+        </p>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    // Requirements data
+    const requirements = [
+      {
+        category: "Web Presence",
+        items: [
+          { id: 'website', text: 'Professional website (not just social media)', critical: true },
+          { id: 'mobile', text: 'Mobile-responsive design', critical: true },
+          { id: 'contact', text: 'Professional contact information displayed', critical: false },
+          { id: 'services', text: 'Clear description of services offered', critical: false },
+        ]
+      },
+      {
+        category: "Trust Signals",
+        items: [
+          { id: 'reviews', text: 'Online reviews (Google, Yelp, or industry-specific)', critical: true },
+          { id: 'licensing', text: 'Business license & contractor license (if required)', critical: true },
+          { id: 'insurance', text: 'General liability insurance', critical: true },
+          { id: 'portfolio', text: 'Photos of completed projects', critical: false },
+        ]
+      },
+      {
+        category: "Business Credentials",
+        items: [
+          { id: 'years', text: '1-3+ years in business (varies by lender)', critical: true },
+          { id: 'ein', text: 'Federal EIN (Employer Identification Number)', critical: true },
+          { id: 'revenue', text: 'Minimum annual revenue ($50K-$250K varies by lender)', critical: true },
+          { id: 'bank', text: 'Business bank account', critical: true },
+        ]
+      },
+      {
+        category: "Business Credit Profile",
+        items: [
+          { id: 'duns', text: 'DUNS number (Dun & Bradstreet)', critical: false },
+          { id: 'tradelines', text: 'Trade credit accounts with suppliers', critical: false },
+          { id: 'paydex', text: 'Paydex score or business credit score', critical: false },
+          { id: 'payment', text: 'Consistent payment history with vendors', critical: true },
+        ]
+      },
+    ];
+
+    // State
+    let checkedItems = {};
+
+    // Email gate handling
+    document.getElementById('email-form').addEventListener('submit', async (e) => {
+      e.preventDefault();
+
+      const formData = new FormData(e.target);
+
+      try {
+        const response = await fetch('https://api.web3forms.com/submit', {
+          method: 'POST',
+          body: formData
+        });
+
+        if (response.ok) {
+          // Hide gate, show checklist
+          document.getElementById('email-gate').classList.add('hidden');
+          document.getElementById('checklist-tool').classList.remove('hidden');
+          document.getElementById('checklist-tool').classList.add('fade-in');
+
+          // Initialize checklist
+          initializeChecklist();
+        }
+      } catch (error) {
+        alert('Something went wrong. Please try again or call us at (502) 240-9897');
+      }
+    });
+
+    function initializeChecklist() {
+      renderChecklist();
+      updateProgress();
+      setupROICalculator();
+    }
+
+    function renderChecklist() {
+      const container = document.getElementById('checklist-container');
+
+      requirements.forEach(category => {
+        const categoryDiv = document.createElement('div');
+        categoryDiv.className = 'mb-6';
+
+        categoryDiv.innerHTML = `
+          <h3 class="text-lg font-bold mb-3 text-gray-800 bg-gray-100 p-3 rounded">
+            ${category.category}
+          </h3>
+          <div class="space-y-2 ml-4">
+            ${category.items.map(item => `
+              <div
+                class="flex items-start gap-3 p-3 hover:bg-gray-50 rounded cursor-pointer"
+                data-id="${item.id}"
+                onclick="toggleItem('${item.id}')"
+              >
+                <svg class="item-checkbox flex-shrink-0 mt-1" width="20" height="20" viewBox="0 0 20 20" fill="none" stroke="currentColor">
+                  <rect x="3" y="3" width="14" height="14" rx="2" stroke-width="2"/>
+                </svg>
+                <span class="flex-1 item-text">
+                  ${item.text}
+                  ${item.critical ? '<span class="ml-2 text-red-600 font-bold">🔴 CRITICAL</span>' : ''}
+                </span>
+              </div>
+            `).join('')}
+          </div>
+        `;
+
+        container.appendChild(categoryDiv);
+      });
+
+      // Update totals
+      const totalItems = requirements.reduce((acc, cat) => acc + cat.items.length, 0);
+      const criticalItems = requirements.flatMap(cat => cat.items.filter(item => item.critical));
+
+      document.getElementById('total-count').textContent = totalItems;
+      document.getElementById('critical-total').textContent = criticalItems.length;
+    }
+
+    function toggleItem(id) {
+      checkedItems[id] = !checkedItems[id];
+
+      // Update checkbox visual
+      const itemDiv = document.querySelector(`[data-id="${id}"]`);
+      const checkbox = itemDiv.querySelector('.item-checkbox');
+      const text = itemDiv.querySelector('.item-text');
+
+      if (checkedItems[id]) {
+        checkbox.innerHTML = '<rect x="3" y="3" width="14" height="14" rx="2" stroke-width="2" stroke="currentColor"/><path d="M6 10l3 3 5-6" stroke="currentColor" stroke-width="2" fill="none"/>';
+        checkbox.style.color = '#10b981';
+        text.style.textDecoration = 'line-through';
+        text.style.color = '#9ca3af';
+      } else {
+        checkbox.innerHTML = '<rect x="3" y="3" width="14" height="14" rx="2" stroke-width="2" stroke="currentColor"/>';
+        checkbox.style.color = '#9ca3af';
+        text.style.textDecoration = 'none';
+        text.style.color = '#111827';
+      }
+
+      updateProgress();
+      updateGapAnalysis();
+    }
+
+    function updateProgress() {
+      const totalItems = requirements.reduce((acc, cat) => acc + cat.items.length, 0);
+      const checkedCount = Object.values(checkedItems).filter(Boolean).length;
+      const criticalItems = requirements.flatMap(cat => cat.items.filter(item => item.critical));
+      const criticalChecked = criticalItems.filter(item => checkedItems[item.id]).length;
+      const completionPercent = Math.round((checkedCount / totalItems) * 100);
+
+      document.getElementById('checked-count').textContent = checkedCount;
+      document.getElementById('completion-percent').textContent = `${completionPercent}%`;
+      document.getElementById('progress-bar').style.width = `${completionPercent}%`;
+      document.getElementById('critical-checked').textContent = criticalChecked;
+
+      // Update timeline
+      const gaps = totalItems - checkedCount;
+      let timeline;
+      if (gaps === 0) timeline = "Ready now!";
+      else if (gaps <= 2) timeline = "2-4 weeks";
+      else if (gaps <= 4) timeline = "4-8 weeks";
+      else if (gaps <= 6) timeline = "8-12 weeks";
+      else timeline = "3-4 months";
+
+      document.getElementById('timeline-estimate').textContent = timeline;
+    }
+
+    function updateGapAnalysis() {
+      const unchecked = requirements.flatMap(cat =>
+        cat.items.filter(item => !checkedItems[item.id])
+      );
+      const critical = unchecked.filter(item => item.critical);
+      const nonCritical = unchecked.filter(item => !item.critical);
+
+      const container = document.getElementById('gap-analysis');
+
+      if (critical.length === 0 && nonCritical.length === 0) {
+        container.innerHTML = `
+          <div class="bg-green-50 border-l-4 border-green-500 p-6">
+            <h2 class="text-2xl font-bold mb-2 text-green-800">✅ You're Financing-Ready!</h2>
+            <p class="text-gray-700">
+              Based on this self-assessment, you meet the basic requirements most financing companies look for. Your next step is to apply to financing partners.
+            </p>
+          </div>
+        `;
+      } else {
+        let html = `
+          <div class="bg-yellow-50 border-l-4 border-yellow-500 p-6">
+            <h2 class="text-2xl font-bold mb-4 text-gray-900">
+              Your Gap Analysis
+            </h2>
+        `;
+
+        if (critical.length > 0) {
+          html += `
+            <div class="mb-4">
+              <h3 class="font-bold text-lg text-red-600 mb-2">🚨 Critical Gaps (Fix These First)</h3>
+              <ul class="list-disc list-inside space-y-1 ml-4">
+                ${critical.map(item => `<li class="text-gray-800">${item.text}</li>`).join('')}
+              </ul>
+            </div>
+          `;
+        }
+
+        if (nonCritical.length > 0) {
+          html += `
+            <div>
+              <h3 class="font-bold text-lg text-gray-700 mb-2">Additional Improvements</h3>
+              <ul class="list-disc list-inside space-y-1 ml-4">
+                ${nonCritical.map(item => `<li class="text-gray-700">${item.text}</li>`).join('')}
+              </ul>
+            </div>
+          `;
+        }
+
+        html += `</div>`;
+        container.innerHTML = html;
+      }
+    }
+
+    function setupROICalculator() {
+      const revenueInput = document.getElementById('revenue');
+      const avgProjectInput = document.getElementById('avg-project');
+
+      function calculateROI() {
+        const revenue = parseFloat(revenueInput.value);
+        const avgProject = parseFloat(avgProjectInput.value);
+
+        if (!revenue || !avgProject) {
+          document.getElementById('roi-results').classList.add('hidden');
+          return;
+        }
+
+        const additionalJobs = 0.35;
+        const largerProjects = 0.25;
+
+        const currentJobCount = revenue / avgProject;
+        const newJobCount = currentJobCount * (1 + additionalJobs);
+        const newAvgProject = avgProject * (1 + largerProjects);
+        const newRevenue = newJobCount * newAvgProject;
+        const additionalRevenue = newRevenue - revenue;
+        const percentIncrease = ((additionalRevenue / revenue) * 100).toFixed(0);
+
+        document.getElementById('current-revenue').textContent = `$${revenue.toLocaleString()}`;
+        document.getElementById('projected-revenue').textContent = `$${newRevenue.toLocaleString()}`;
+        document.getElementById('additional-revenue').textContent = `+$${additionalRevenue.toLocaleString()}`;
+        document.getElementById('percent-increase').textContent = `(${percentIncrease}% increase)`;
+
+        document.getElementById('roi-results').classList.remove('hidden');
+      }
+
+      revenueInput.addEventListener('input', calculateROI);
+      avgProjectInput.addEventListener('input', calculateROI);
+    }
+  </script>
+
+</body>
+</html>

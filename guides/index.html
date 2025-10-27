@@ -1,0 +1,322 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-9GLC3N01WB"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-9GLC3N01WB');
+  </script>
+
+  <meta name="description" content="State-by-state guides for contractors offering customer financing. Licensing requirements, regulations, and platform availability for each state." />
+
+  <meta property="og:title" content="State Contractor Financing Guides - VetMG Media" />
+  <meta property="og:description" content="Complete guides for offering customer financing as a contractor. State-specific licensing, regulations, and requirements." />
+  <meta property="og:type" content="website" />
+
+  <title>State Contractor Financing Guides - VetMG Media</title>
+
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            'milwaukee-red': '#E31837',
+            'milwaukee-black': '#333333',
+            'milwaukee-gray': '#F5F5F5',
+          },
+        },
+      },
+    }
+  </script>
+
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+
+  <style>
+    body {
+      font-family: 'Space Grotesk', sans-serif;
+    }
+
+    .fade-in {
+      opacity: 0;
+      animation: fadeIn 0.8s ease-in forwards;
+    }
+    @keyframes fadeIn {
+      from {
+        opacity: 0;
+        transform: translateY(20px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    .state-card {
+      transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    .state-card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 12px 24px rgba(227, 24, 55, 0.15);
+    }
+
+    .state-card.available {
+      border-left: 4px solid #E31837;
+    }
+
+    .state-card.coming-soon {
+      opacity: 0.6;
+      border-left: 4px solid #9CA3AF;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+  </style>
+</head>
+<body class="bg-white">
+
+  <!-- Header -->
+  <header class="bg-milwaukee-black sticky top-0 z-50 shadow-lg">
+    <nav class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8" aria-label="Main navigation">
+      <div class="flex justify-between h-16">
+        <div class="flex items-center">
+          <a href="/" class="text-2xl font-bold text-white tracking-tight">
+            VetMG
+          </a>
+        </div>
+
+        <!-- Desktop Navigation -->
+        <div class="hidden md:flex items-center space-x-1">
+          <a href="/#how-it-works" class="nav-link text-white px-4 py-2 transition-colors duration-300 tracking-wide focus:outline-none focus:ring-2 focus:ring-milwaukee-red">How It Works</a>
+          <a href="/#pricing" class="nav-link text-white px-4 py-2 transition-colors duration-300 tracking-wide focus:outline-none focus:ring-2 focus:ring-milwaukee-red">Pricing</a>
+          <a href="/#portfolio" class="nav-link text-white px-4 py-2 transition-colors duration-300 tracking-wide focus:outline-none focus:ring-2 focus:ring-milwaukee-red">Portfolio</a>
+          <a href="/platform-matcher.html" class="nav-link text-milwaukee-red px-4 py-2 transition-colors duration-300 tracking-wide focus:outline-none focus:ring-2 focus:ring-milwaukee-red font-medium">Platform Matcher</a>
+          <a href="/application-guide.html" class="nav-link text-white px-4 py-2 transition-colors duration-300 tracking-wide focus:outline-none focus:ring-2 focus:ring-milwaukee-red">Application Guide</a>
+          <a href="/#contact" class="nav-link text-white px-4 py-2 transition-colors duration-300 tracking-wide focus:outline-none focus:ring-2 focus:ring-milwaukee-red">Contact</a>
+        </div>
+
+        <!-- Mobile Menu Button -->
+        <div class="md:hidden flex items-center">
+          <button id="menu-toggle" aria-label="Toggle navigation menu" aria-expanded="false" class="text-white hover:text-milwaukee-red transition-colors duration-300 focus:outline-none focus:ring-2 focus:ring-milwaukee-red flex items-center gap-2">
+            <span class="text-sm font-medium">Menu</span>
+            <svg class="h-6 w-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+            </svg>
+          </button>
+        </div>
+      </div>
+
+      <!-- Mobile Menu -->
+      <div id="mobile-menu" class="hidden md:hidden">
+        <div class="pt-2 pb-3 space-y-1">
+          <a href="/#how-it-works" class="block px-3 py-2 text-white hover:bg-milwaukee-red transition-colors duration-300">How It Works</a>
+          <a href="/#pricing" class="block px-3 py-2 text-white hover:bg-milwaukee-red transition-colors duration-300">Pricing</a>
+          <a href="/#portfolio" class="block px-3 py-2 text-white hover:bg-milwaukee-red transition-colors duration-300">Portfolio</a>
+          <a href="/platform-matcher.html" class="block px-3 py-2 text-milwaukee-red font-medium hover:bg-milwaukee-red hover:text-white transition-colors duration-300">Platform Matcher</a>
+          <a href="/application-guide.html" class="block px-3 py-2 text-white hover:bg-milwaukee-red transition-colors duration-300">Application Guide</a>
+          <a href="/#contact" class="block px-3 py-2 text-white hover:bg-milwaukee-red transition-colors duration-300">Contact</a>
+        </div>
+      </div>
+    </nav>
+  </header>
+
+  <!-- Hero -->
+  <section class="bg-milwaukee-black pt-24 pb-16">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center fade-in">
+        <h1 class="text-4xl md:text-5xl font-bold text-white mb-6 tracking-tight leading-tight">
+          State Contractor Financing Guides
+        </h1>
+        <p class="text-xl md:text-2xl text-gray-300 mb-4 max-w-4xl mx-auto">
+          Everything you need to know about offering customer financing in your state
+        </p>
+        <p class="text-lg text-gray-400 max-w-3xl mx-auto">
+          Licensing requirements, regulations, platform availability, and step-by-step compliance guidance for contractors.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- What's in Each Guide -->
+  <section class="py-16 bg-milwaukee-gray">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <h2 class="text-3xl font-bold text-center mb-12 text-milwaukee-black">
+        What's in Each State Guide
+      </h2>
+      <div class="grid md:grid-cols-3 gap-8 max-w-5xl mx-auto">
+        <div class="bg-white p-6 rounded-lg shadow-md">
+          <div class="text-milwaukee-red text-3xl font-bold mb-4">01</div>
+          <h3 class="text-xl font-bold mb-3 text-milwaukee-black">Licensing & Registration</h3>
+          <p class="text-gray-700">State-specific contractor licensing requirements, bonding minimums, and insurance thresholds that financing platforms verify.</p>
+        </div>
+        <div class="bg-white p-6 rounded-lg shadow-md">
+          <div class="text-milwaukee-red text-3xl font-bold mb-4">02</div>
+          <h3 class="text-xl font-bold mb-3 text-milwaukee-black">Platform Availability</h3>
+          <p class="text-gray-700">Which major financing platforms (GreenSky, Synchrony, PowerPay, etc.) operate in your state and their specific requirements.</p>
+        </div>
+        <div class="bg-white p-6 rounded-lg shadow-md">
+          <div class="text-milwaukee-red text-3xl font-bold mb-4">03</div>
+          <h3 class="text-xl font-bold mb-3 text-milwaukee-black">Compliance Checklist</h3>
+          <p class="text-gray-700">Customer disclosures, contract requirements, mechanics lien laws, and other legal requirements for offering financing.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- State Guides Grid -->
+  <section class="py-20 bg-white">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <h2 class="text-3xl font-bold text-center mb-4 text-milwaukee-black">
+        Browse by State
+      </h2>
+      <p class="text-center text-gray-600 mb-12 max-w-2xl mx-auto">
+        Select your state for a complete guide to offering customer financing as a contractor.
+      </p>
+
+      <div class="grid md:grid-cols-3 lg:grid-cols-4 gap-6">
+
+        <!-- Kentucky - Available -->
+        <a href="/guides/kentucky-contractor-financing.html" class="state-card available bg-white p-6 rounded-lg shadow-md block">
+          <div class="flex items-start justify-between mb-3">
+            <h3 class="text-xl font-bold text-milwaukee-black">Kentucky</h3>
+            <span class="bg-milwaukee-red text-white text-xs px-2 py-1 rounded font-semibold">Available</span>
+          </div>
+          <p class="text-gray-600 text-sm mb-4">Complete guide to contractor licensing, financing platforms, and compliance requirements.</p>
+          <div class="text-milwaukee-red font-semibold text-sm">Read Guide →</div>
+        </a>
+
+        <!-- Coming Soon States -->
+        <div class="state-card coming-soon bg-white p-6 rounded-lg shadow-md">
+          <div class="flex items-start justify-between mb-3">
+            <h3 class="text-xl font-bold text-gray-600">California</h3>
+            <span class="bg-gray-400 text-white text-xs px-2 py-1 rounded font-semibold">Coming Soon</span>
+          </div>
+          <p class="text-gray-500 text-sm mb-4">Comprehensive guide covering CSLB requirements and strict disclosure laws.</p>
+        </div>
+
+        <div class="state-card coming-soon bg-white p-6 rounded-lg shadow-md">
+          <div class="flex items-start justify-between mb-3">
+            <h3 class="text-xl font-bold text-gray-600">Texas</h3>
+            <span class="bg-gray-400 text-white text-xs px-2 py-1 rounded font-semibold">Coming Soon</span>
+          </div>
+          <p class="text-gray-500 text-sm mb-4">Business-friendly regulations with broad platform availability.</p>
+        </div>
+
+        <div class="state-card coming-soon bg-white p-6 rounded-lg shadow-md">
+          <div class="flex items-start justify-between mb-3">
+            <h3 class="text-xl font-bold text-gray-600">Florida</h3>
+            <span class="bg-gray-400 text-white text-xs px-2 py-1 rounded font-semibold">Coming Soon</span>
+          </div>
+          <p class="text-gray-500 text-sm mb-4">Home improvement boom market with specific contractor licensing tiers.</p>
+        </div>
+
+        <div class="state-card coming-soon bg-white p-6 rounded-lg shadow-md">
+          <div class="flex items-start justify-between mb-3">
+            <h3 class="text-xl font-bold text-gray-600">Georgia</h3>
+            <span class="bg-gray-400 text-white text-xs px-2 py-1 rounded font-semibold">Coming Soon</span>
+          </div>
+          <p class="text-gray-500 text-sm mb-4">Growing contractor market with evolving financing regulations.</p>
+        </div>
+
+        <div class="state-card coming-soon bg-white p-6 rounded-lg shadow-md">
+          <div class="flex items-start justify-between mb-3">
+            <h3 class="text-xl font-bold text-gray-600">Arizona</h3>
+            <span class="bg-gray-400 text-white text-xs px-2 py-1 rounded font-semibold">Coming Soon</span>
+          </div>
+          <p class="text-gray-500 text-sm mb-4">ROC licensing requirements and solar contractor specifics.</p>
+        </div>
+
+        <div class="state-card coming-soon bg-white p-6 rounded-lg shadow-md">
+          <div class="flex items-start justify-between mb-3">
+            <h3 class="text-xl font-bold text-gray-600">North Carolina</h3>
+            <span class="bg-gray-400 text-white text-xs px-2 py-1 rounded font-semibold">Coming Soon</span>
+          </div>
+          <p class="text-gray-500 text-sm mb-4">General contractor licensing and home improvement specialties.</p>
+        </div>
+
+        <div class="state-card coming-soon bg-white p-6 rounded-lg shadow-md">
+          <div class="flex items-start justify-between mb-3">
+            <h3 class="text-xl font-bold text-gray-600">Pennsylvania</h3>
+            <span class="bg-gray-400 text-white text-xs px-2 py-1 rounded font-semibold">Coming Soon</span>
+          </div>
+          <p class="text-gray-500 text-sm mb-4">Home Improvement Contractor (HIC) registration requirements.</p>
+        </div>
+
+      </div>
+
+      <!-- More Coming -->
+      <div class="mt-12 text-center">
+        <p class="text-gray-600 mb-6">
+          Don't see your state? We're adding new guides every month.
+        </p>
+        <a href="/#contact" class="inline-block bg-milwaukee-red text-white px-8 py-3 rounded font-semibold hover:bg-red-700 transition-colors">
+          Request Your State Guide
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA Section -->
+  <section class="py-16 bg-milwaukee-black">
+    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+      <h2 class="text-3xl md:text-4xl font-bold text-white mb-6">
+        Need Help Getting Approved?
+      </h2>
+      <p class="text-xl text-gray-300 mb-8">
+        We'll build you a financing-ready website and walk you through every platform application.
+      </p>
+      <div class="flex flex-col sm:flex-row gap-4 justify-center">
+        <a href="/platform-matcher.html" class="bg-milwaukee-red text-white px-8 py-3 rounded font-semibold hover:bg-red-700 transition-colors">
+          Find Your Platforms
+        </a>
+        <a href="/#pricing" class="bg-white text-milwaukee-black px-8 py-3 rounded font-semibold hover:bg-gray-100 transition-colors">
+          View Packages
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="bg-milwaukee-gray py-8 border-t-4 border-milwaukee-red">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+      <p class="text-gray-600">
+        &copy; 2025 VetMG Media, LLC. Veteran-Owned Software Engineering Consultancy.
+      </p>
+    </div>
+  </footer>
+
+  <!-- Mobile Menu Toggle Script -->
+  <script>
+    const menuToggle = document.getElementById('menu-toggle');
+    const mobileMenu = document.getElementById('mobile-menu');
+
+    if (menuToggle && mobileMenu) {
+      menuToggle.addEventListener('click', () => {
+        const isHidden = mobileMenu.classList.contains('hidden');
+        mobileMenu.classList.toggle('hidden');
+        menuToggle.setAttribute('aria-expanded', isHidden ? 'true' : 'false');
+      });
+    }
+
+    // Track state guide clicks
+    document.querySelectorAll('.state-card.available').forEach(card => {
+      card.addEventListener('click', (e) => {
+        const state = e.currentTarget.querySelector('h3').textContent;
+        gtag('event', 'state_guide_click', {
+          'event_category': 'State Guides',
+          'event_label': state
+        });
+      });
+    });
+  </script>
+
+</body>
+</html>

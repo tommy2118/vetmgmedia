@@ -4,6 +4,15 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-9GLC3N01WB"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-9GLC3N01WB');
+    </script>
+
     <!-- SEO: Meta Description -->
     <meta name="description" content="Helping contractors qualify for customer financing programs. Professional websites you own outright - no lock-in, no monthly fees. Starting at $3,500." />
 
@@ -1357,6 +1366,12 @@
             const data = await response.json();
 
             if (data.success) {
+              // Track contact form submission
+              gtag('event', 'contact_form_submit', {
+                'event_category': 'Lead Generation',
+                'event_label': 'Homepage Contact Form'
+              });
+
               result.classList.remove('hidden');
               successMsg.classList.remove('hidden');
               errorMsg.classList.add('hidden');
@@ -1377,6 +1392,71 @@
           }
         });
       }
+
+      // Track phone number clicks
+      document.querySelectorAll('a[href^="tel:"]').forEach(link => {
+        link.addEventListener('click', () => {
+          gtag('event', 'phone_click', {
+            'event_category': 'Contact',
+            'event_label': 'Phone Number Click',
+            'value': link.href
+          });
+        });
+      });
+
+      // Track email clicks
+      document.querySelectorAll('a[href^="mailto:"]').forEach(link => {
+        link.addEventListener('click', () => {
+          gtag('event', 'email_click', {
+            'event_category': 'Contact',
+            'event_label': 'Email Click',
+            'value': link.href
+          });
+        });
+      });
+
+      // Track SMS clicks
+      document.querySelectorAll('a[href^="sms:"]').forEach(link => {
+        link.addEventListener('click', () => {
+          gtag('event', 'sms_click', {
+            'event_category': 'Contact',
+            'event_label': 'SMS Click'
+          });
+        });
+      });
+
+      // Track CTA button clicks
+      document.querySelectorAll('a[href*="pricing"], a[href*="#contact"]').forEach(link => {
+        link.addEventListener('click', () => {
+          gtag('event', 'cta_click', {
+            'event_category': 'Engagement',
+            'event_label': link.textContent.trim(),
+            'value': link.href
+          });
+        });
+      });
+
+      // Track Platform Matcher link clicks
+      document.querySelectorAll('a[href*="platform-matcher"]').forEach(link => {
+        link.addEventListener('click', () => {
+          gtag('event', 'platform_matcher_click', {
+            'event_category': 'Navigation',
+            'event_label': 'Platform Matcher Link Click',
+            'location': link.closest('section')?.id || 'unknown'
+          });
+        });
+      });
+
+      // Track outbound portfolio links
+      document.querySelectorAll('a[href*="adroit-services.com"], a[href*="lytle-landscape.com"]').forEach(link => {
+        link.addEventListener('click', () => {
+          gtag('event', 'portfolio_click', {
+            'event_category': 'Engagement',
+            'event_label': 'Portfolio Example Click',
+            'value': link.href
+          });
+        });
+      });
     </script>
   </body>
 </html>

@@ -42,61 +42,175 @@
     body {
       font-family: 'Space Grotesk', sans-serif;
     }
+
+    .fade-in {
+      opacity: 0;
+      animation: fadeIn 0.8s ease-in forwards;
+    }
+    @keyframes fadeIn {
+      from {
+        opacity: 0;
+        transform: translateY(20px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    .slide-in {
+      animation: slideIn 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+    @keyframes slideIn {
+      from {
+        transform: translateX(-50px);
+        opacity: 0;
+      }
+      to {
+        transform: translateX(0);
+        opacity: 1;
+      }
+    }
+
+    /* Respect user's motion preferences */
+    @media (prefers-reduced-motion: reduce) {
+      .fade-in,
+      .slide-in,
+      .hover-grow {
+        animation: none;
+        transition: none;
+        opacity: 1;
+        transform: none;
+      }
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    .hover-grow {
+      transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+    .hover-grow:hover {
+      transform: scale(1.02);
+    }
+
+    .gradient-text {
+      background: linear-gradient(90deg, #E31837, #ff4d4d);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      color: transparent;
+    }
+
+    .tech-grid {
+      background-image:
+        linear-gradient(rgba(227, 24, 55, 0.1) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(227, 24, 55, 0.1) 1px, transparent 1px);
+      background-size: 20px 20px;
+    }
   </style>
 </head>
 <body class="bg-white">
 
   <!-- Header -->
   <header class="bg-milwaukee-black sticky top-0 z-50 shadow-lg">
-    <nav class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4">
-      <div class="flex justify-between items-center">
-        <a href="/" class="text-2xl font-bold text-white tracking-tight">VetMG</a>
-        <div class="flex gap-4">
-          <a href="/" class="text-white hover:text-milwaukee-red transition-colors">Home</a>
-          <a href="/#contact" class="text-milwaukee-red font-semibold hover:text-red-400 transition-colors">Contact</a>
+    <nav class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8" aria-label="Main navigation">
+      <div class="flex justify-between h-16">
+        <div class="flex items-center slide-in">
+          <a href="/" class="text-2xl font-bold text-white tracking-tight">
+            VetMG
+          </a>
+        </div>
+
+        <!-- Desktop Navigation -->
+        <div class="hidden md:flex items-center space-x-1">
+          <a href="/#how-it-works" class="nav-link text-white px-4 py-2 transition-colors duration-300 tracking-wide focus:outline-none focus:ring-2 focus:ring-milwaukee-red">How It Works</a>
+          <a href="/#pricing" class="nav-link text-white px-4 py-2 transition-colors duration-300 tracking-wide focus:outline-none focus:ring-2 focus:ring-milwaukee-red">Pricing</a>
+          <a href="/platform-matcher.html" class="nav-link text-milwaukee-red px-4 py-2 transition-colors duration-300 tracking-wide focus:outline-none focus:ring-2 focus:ring-milwaukee-red font-medium">Platform Matcher</a>
+          <a href="/#contact" class="nav-link text-white px-4 py-2 transition-colors duration-300 tracking-wide focus:outline-none focus:ring-2 focus:ring-milwaukee-red">Contact</a>
+        </div>
+
+        <!-- Mobile Menu Button -->
+        <div class="md:hidden flex items-center">
+          <button id="menu-toggle" aria-label="Toggle navigation menu" aria-expanded="false" class="text-white hover:text-milwaukee-red transition-colors duration-300 focus:outline-none focus:ring-2 focus:ring-milwaukee-red flex items-center gap-2">
+            <span class="text-sm font-medium">Menu</span>
+            <svg class="h-6 w-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+            </svg>
+          </button>
+        </div>
+      </div>
+
+      <!-- Mobile Menu -->
+      <div id="mobile-menu" class="hidden md:hidden">
+        <div class="pt-2 pb-3 space-y-1">
+          <a href="/#how-it-works" class="block px-3 py-2 text-white hover:bg-milwaukee-red transition-colors duration-300">How It Works</a>
+          <a href="/#pricing" class="block px-3 py-2 text-white hover:bg-milwaukee-red transition-colors duration-300">Pricing</a>
+          <a href="/platform-matcher.html" class="block px-3 py-2 text-milwaukee-red font-medium hover:bg-milwaukee-red hover:text-white transition-colors duration-300">Platform Matcher</a>
+          <a href="/#contact" class="block px-3 py-2 text-white hover:bg-milwaukee-red transition-colors duration-300">Contact</a>
         </div>
       </div>
     </nav>
   </header>
 
-  <!-- Hero -->
-  <section class="bg-milwaukee-black py-20">
-    <div class="max-w-4xl mx-auto px-4 text-center">
-      <div class="text-milwaukee-red text-6xl mb-6">🪝</div>
-      <h1 class="text-4xl md:text-5xl font-bold text-white mb-6">
-        Positioning Manifesto
-      </h1>
-      <p class="text-2xl text-gray-300 font-semibold">
-        Why We Exist
-      </p>
-    </div>
-  </section>
+  <!-- Main Content -->
+  <main>
 
-  <!-- Subtitle -->
-  <section class="bg-milwaukee-gray py-8 border-b-4 border-milwaukee-red">
-    <div class="max-w-4xl mx-auto px-4 text-center">
-      <p class="text-xl text-gray-700 font-medium">
-        For Contractors Who Want to Look Legit, Close Bigger Jobs, and Offer Financing with Confidence
-      </p>
-    </div>
-  </section>
+    <!-- Hero -->
+    <section class="bg-milwaukee-black pt-32 pb-20 tech-grid">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="text-center fade-in">
+          <h1 class="text-4xl md:text-6xl font-bold text-white mb-6 tracking-tight leading-tight">
+            <span class="gradient-text">Why We Exist</span>
+          </h1>
+          <p class="text-xl md:text-2xl text-gray-300 mb-4 tracking-wide max-w-4xl mx-auto">
+            For Contractors Who Want to Look Legit, Close Bigger Jobs, and Offer Financing with Confidence
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Trust Bar -->
+    <section class="bg-white py-6 border-b-2 border-milwaukee-gray">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="flex flex-wrap justify-center items-center gap-8 text-milwaukee-black text-sm md:text-base font-medium">
+          <div class="flex items-center gap-2">
+            <svg class="w-5 h-5 text-milwaukee-red" fill="currentColor" viewBox="0 0 20 20">
+              <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/>
+            </svg>
+            <span>Veteran-Owned</span>
+          </div>
+          <div class="flex items-center gap-2">
+            <svg class="w-5 h-5 text-milwaukee-red" fill="currentColor" viewBox="0 0 20 20">
+              <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/>
+            </svg>
+            <span>Contractor-Focused</span>
+          </div>
+          <div class="flex items-center gap-2">
+            <svg class="w-5 h-5 text-milwaukee-red" fill="currentColor" viewBox="0 0 20 20">
+              <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/>
+            </svg>
+            <span>Financing-Ready</span>
+          </div>
+        </div>
+      </div>
+    </section>
 
   <!-- What We Believe -->
-  <section class="py-16 bg-white">
-    <div class="max-w-4xl mx-auto px-4">
-      <div class="flex items-center gap-3 mb-6">
-        <span class="text-4xl">🎯</span>
-        <h2 class="text-3xl font-bold text-gray-900">What We Believe</h2>
-      </div>
-
-      <div class="bg-milwaukee-gray p-8 rounded-lg border-l-4 border-milwaukee-red">
-        <p class="text-xl text-gray-800 leading-relaxed mb-4">
-          We believe <strong>hard-working contractors deserve access to the same financing tools big companies use</strong> to close high-ticket jobs.
-        </p>
-        <p class="text-xl text-gray-800 leading-relaxed mb-4">
-          But most get <strong>disqualified before they even get started</strong> — not because of their work, but because they don't "look legit" online.
-        </p>
-        <p class="text-2xl text-milwaukee-red font-bold">
+  <section class="py-16 bg-white border-t-4 border-milwaukee-red">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center slide-in">
+      <h2 class="text-3xl md:text-4xl font-bold text-milwaukee-black mb-6">
+        What We Believe
+      </h2>
+      <p class="text-xl text-gray-700 mb-6 leading-relaxed max-w-4xl mx-auto">
+        We believe <strong>hard-working contractors deserve access to the same financing tools big companies use</strong> to close high-ticket jobs.
+      </p>
+      <p class="text-xl text-gray-700 mb-8 leading-relaxed max-w-4xl mx-auto">
+        But most get <strong>disqualified before they even get started</strong> — not because of their work, but because they don't "look legit" online.
+      </p>
+      <div class="bg-milwaukee-red p-8 rounded-lg inline-block">
+        <p class="text-2xl md:text-3xl font-bold text-white">
           We're here to fix that.
         </p>
       </div>
@@ -105,25 +219,30 @@
 
   <!-- We Don't Build Websites -->
   <section class="py-16 bg-milwaukee-gray">
-    <div class="max-w-4xl mx-auto px-4">
-      <div class="flex items-center gap-3 mb-6">
-        <span class="text-4xl">🛠</span>
-        <h2 class="text-3xl font-bold text-gray-900">We Don't Build "Websites." We Build Credibility.</h2>
-      </div>
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center slide-in">
+      <h2 class="text-3xl md:text-4xl font-bold text-milwaukee-black mb-6">
+        We Don't Build "Websites." We Build Credibility.
+      </h2>
+      <p class="text-xl text-gray-700 mb-8 leading-relaxed max-w-4xl mx-auto">
+        <strong>Most web designers promise you leads.</strong><br>
+        We promise something more foundational: <span class="text-milwaukee-red font-bold">trust</span> — from lenders, customers, and referrers.
+      </p>
 
-      <div class="space-y-6 text-lg text-gray-700">
-        <p>
-          <strong>Most web designers promise you leads.</strong><br>
-          We promise something more foundational: <span class="text-milwaukee-red font-bold">trust</span> — from lenders, customers, and referrers.
-        </p>
-
-        <div class="bg-white p-6 rounded-lg shadow">
-          <p class="mb-3">
-            Your site isn't your lead source on day one.
-          </p>
-          <p class="text-xl font-semibold text-gray-900">
-            It's your <span class="text-milwaukee-red">digital business card</span>, your <span class="text-milwaukee-red">proof of professionalism</span>, and your <span class="text-milwaukee-red">first step toward unlocking customer financing</span>.
-          </p>
+      <div class="bg-white p-8 rounded-lg max-w-4xl mx-auto">
+        <h3 class="text-2xl font-bold mb-4 text-milwaukee-black">Your Website Is a Qualification Tool, Not a Lead Source (Yet)</h3>
+        <div class="grid md:grid-cols-3 gap-6 text-left">
+          <div>
+            <h4 class="font-bold text-milwaukee-red mb-2">Day 1</h4>
+            <p class="text-gray-700 text-sm">Your <span class="text-milwaukee-red">digital business card</span></p>
+          </div>
+          <div>
+            <h4 class="font-bold text-milwaukee-red mb-2">Week 1</h4>
+            <p class="text-gray-700 text-sm">Your <span class="text-milwaukee-red">proof of professionalism</span></p>
+          </div>
+          <div>
+            <h4 class="font-bold text-milwaukee-red mb-2">Onward</h4>
+            <p class="text-gray-700 text-sm">Your <span class="text-milwaukee-red">first step toward unlocking customer financing</span></p>
+          </div>
         </div>
       </div>
     </div>
@@ -131,38 +250,51 @@
 
   <!-- Why We Niche Down -->
   <section class="py-16 bg-white">
-    <div class="max-w-4xl mx-auto px-4">
-      <div class="flex items-center gap-3 mb-6">
-        <span class="text-4xl">🧭</span>
-        <h2 class="text-3xl font-bold text-gray-900">Why We Niche Down</h2>
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center fade-in">
+      <h2 class="text-3xl md:text-4xl font-bold text-milwaukee-black mb-6">
+        Why We Niche Down
+      </h2>
+      <p class="text-xl text-gray-700 mb-8 leading-relaxed max-w-4xl mx-auto">
+        We don't serve "everyone." We serve contractors who:
+      </p>
+
+      <div class="grid md:grid-cols-2 gap-6 max-w-5xl mx-auto mb-8">
+        <div class="bg-milwaukee-gray p-6 rounded-lg text-left">
+          <div class="flex items-start gap-3">
+            <svg class="w-6 h-6 text-milwaukee-red flex-shrink-0 mt-1" fill="currentColor" viewBox="0 0 20 20">
+              <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/>
+            </svg>
+            <span class="text-gray-700">Want to offer financing to their customers</span>
+          </div>
+        </div>
+        <div class="bg-milwaukee-gray p-6 rounded-lg text-left">
+          <div class="flex items-start gap-3">
+            <svg class="w-6 h-6 text-milwaukee-red flex-shrink-0 mt-1" fill="currentColor" viewBox="0 0 20 20">
+              <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/>
+            </svg>
+            <span class="text-gray-700">Are tired of being ghosted because they look unprofessional</span>
+          </div>
+        </div>
+        <div class="bg-milwaukee-gray p-6 rounded-lg text-left">
+          <div class="flex items-start gap-3">
+            <svg class="w-6 h-6 text-milwaukee-red flex-shrink-0 mt-1" fill="currentColor" viewBox="0 0 20 20">
+              <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/>
+            </svg>
+            <span class="text-gray-700">Know their work is good — and want their online presence to prove it</span>
+          </div>
+        </div>
+        <div class="bg-milwaukee-gray p-6 rounded-lg text-left">
+          <div class="flex items-start gap-3">
+            <svg class="w-6 h-6 text-milwaukee-red flex-shrink-0 mt-1" fill="currentColor" viewBox="0 0 20 20">
+              <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/>
+            </svg>
+            <span class="text-gray-700">Are ready to grow, legitimize, and scale</span>
+          </div>
+        </div>
       </div>
 
-      <div class="bg-milwaukee-black text-white p-8 rounded-lg mb-6">
-        <p class="text-xl mb-4">
-          We don't serve "everyone." We serve contractors who:
-        </p>
-        <ul class="space-y-3 text-lg">
-          <li class="flex items-start gap-3">
-            <span class="text-milwaukee-red font-bold">✓</span>
-            <span>Want to offer financing to their customers</span>
-          </li>
-          <li class="flex items-start gap-3">
-            <span class="text-milwaukee-red font-bold">✓</span>
-            <span>Are tired of being ghosted because they look unprofessional</span>
-          </li>
-          <li class="flex items-start gap-3">
-            <span class="text-milwaukee-red font-bold">✓</span>
-            <span>Know their work is good — and want their online presence to prove it</span>
-          </li>
-          <li class="flex items-start gap-3">
-            <span class="text-milwaukee-red font-bold">✓</span>
-            <span>Are ready to grow, legitimize, and scale</span>
-          </li>
-        </ul>
-      </div>
-
-      <div class="bg-gray-50 p-6 rounded-lg border-l-4 border-milwaukee-red">
-        <p class="text-lg italic text-gray-700">
+      <div class="bg-milwaukee-black text-white p-8 rounded-lg max-w-4xl mx-auto">
+        <p class="text-xl italic">
           Niching down isn't about casting a smaller net.<br>
           <strong>It's about using precision lures to attract the right kind of work</strong> — work that pays well, builds reputation, and leads to more of the same.
         </p>
@@ -172,46 +304,51 @@
 
   <!-- How We Talk -->
   <section class="py-16 bg-milwaukee-gray">
-    <div class="max-w-4xl mx-auto px-4">
-      <div class="flex items-center gap-3 mb-6">
-        <span class="text-4xl">💬</span>
-        <h2 class="text-3xl font-bold text-gray-900">How We Talk</h2>
-      </div>
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center slide-in">
+      <h2 class="text-3xl md:text-4xl font-bold text-milwaukee-black mb-12">
+        How We Talk
+      </h2>
 
-      <div class="grid md:grid-cols-2 gap-8">
+      <div class="grid md:grid-cols-2 gap-8 max-w-5xl mx-auto">
         <!-- Don't Say -->
-        <div class="bg-white p-6 rounded-lg shadow">
-          <h3 class="text-xl font-bold text-red-600 mb-4">You'll Never Hear Us Say:</h3>
-          <ul class="space-y-3 text-gray-700">
-            <li class="flex items-start gap-2">
-              <span class="text-red-500">✗</span>
-              <span>"We'll get you to #1 on Google overnight"</span>
+        <div class="bg-white p-8 rounded-lg shadow">
+          <h3 class="text-2xl font-bold text-red-600 mb-6">You'll Never Hear Us Say:</h3>
+          <ul class="space-y-4 text-left">
+            <li class="flex items-start gap-3">
+              <span class="text-red-500 text-xl">✗</span>
+              <span class="text-gray-700">"We'll get you to #1 on Google overnight"</span>
             </li>
-            <li class="flex items-start gap-2">
-              <span class="text-red-500">✗</span>
-              <span>"Just pick a template and upload your logo"</span>
+            <li class="flex items-start gap-3">
+              <span class="text-red-500 text-xl">✗</span>
+              <span class="text-gray-700">"Just pick a template and upload your logo"</span>
             </li>
-            <li class="flex items-start gap-2">
-              <span class="text-red-500">✗</span>
-              <span>"You need a funnel or your business will fail"</span>
+            <li class="flex items-start gap-3">
+              <span class="text-red-500 text-xl">✗</span>
+              <span class="text-gray-700">"You need a funnel or your business will fail"</span>
             </li>
           </ul>
         </div>
 
         <!-- Do Say -->
-        <div class="bg-milwaukee-black text-white p-6 rounded-lg shadow">
-          <h3 class="text-xl font-bold text-milwaukee-red mb-4">Instead, We'll Say:</h3>
-          <ul class="space-y-3">
-            <li class="flex items-start gap-2">
-              <span class="text-green-400">✓</span>
+        <div class="bg-milwaukee-black text-white p-8 rounded-lg shadow">
+          <h3 class="text-2xl font-bold text-milwaukee-red mb-6">Instead, We'll Say:</h3>
+          <ul class="space-y-4 text-left">
+            <li class="flex items-start gap-3">
+              <svg class="w-6 h-6 text-green-400 flex-shrink-0 mt-1" fill="currentColor" viewBox="0 0 20 20">
+                <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/>
+              </svg>
               <span>"Let's build a digital footprint that qualifies you for financing"</span>
             </li>
-            <li class="flex items-start gap-2">
-              <span class="text-green-400">✓</span>
+            <li class="flex items-start gap-3">
+              <svg class="w-6 h-6 text-green-400 flex-shrink-0 mt-1" fill="currentColor" viewBox="0 0 20 20">
+                <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/>
+              </svg>
               <span>"Let's give referrers and customers a reason to trust you"</span>
             </li>
-            <li class="flex items-start gap-2">
-              <span class="text-green-400">✓</span>
+            <li class="flex items-start gap-3">
+              <svg class="w-6 h-6 text-green-400 flex-shrink-0 mt-1" fill="currentColor" viewBox="0 0 20 20">
+                <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/>
+              </svg>
               <span>"Let's make sure you're not disqualified before the sale starts"</span>
             </li>
           </ul>
@@ -221,21 +358,20 @@
   </section>
 
   <!-- What We're Really Selling -->
-  <section class="py-16 bg-white">
-    <div class="max-w-4xl mx-auto px-4">
-      <div class="flex items-center gap-3 mb-6">
-        <span class="text-4xl">🚪</span>
-        <h2 class="text-3xl font-bold text-gray-900">What We're Really Selling</h2>
-      </div>
+  <section class="py-16 bg-white border-t-4 border-milwaukee-red">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center fade-in">
+      <h2 class="text-3xl md:text-4xl font-bold text-milwaukee-black mb-8">
+        What We're Really Selling
+      </h2>
 
-      <div class="bg-milwaukee-red text-white p-10 rounded-lg text-center">
-        <p class="text-2xl mb-6 leading-relaxed">
+      <div class="bg-gradient-to-r from-milwaukee-red to-red-600 text-white p-12 rounded-lg max-w-4xl mx-auto">
+        <p class="text-2xl md:text-3xl mb-6 leading-relaxed">
           We're not selling pages or pixels.
         </p>
-        <p class="text-3xl font-bold mb-6">
+        <p class="text-3xl md:text-4xl font-bold mb-6">
           We're selling <span class="underline">access</span> — to financing, to bigger jobs, to long-term credibility.
         </p>
-        <p class="text-2xl">
+        <p class="text-2xl md:text-3xl font-bold">
           We're selling your seat at the table.
         </p>
       </div>
@@ -244,20 +380,20 @@
 
   <!-- Call It What It Is -->
   <section class="py-16 bg-milwaukee-gray">
-    <div class="max-w-4xl mx-auto px-4 text-center">
-      <div class="mb-6">
-        <span class="text-4xl">📜</span>
-      </div>
-      <h2 class="text-3xl font-bold text-gray-900 mb-6">Call It What It Is</h2>
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center slide-in">
+      <h2 class="text-3xl md:text-4xl font-bold text-milwaukee-black mb-8">
+        Call It What It Is
+      </h2>
 
-      <div class="space-y-4 text-xl text-gray-600 mb-8">
+      <div class="space-y-4 text-xl md:text-2xl text-gray-600 mb-8">
         <p class="line-through">Not "web development."</p>
         <p class="line-through">Not "digital marketing."</p>
       </div>
 
-      <div class="bg-milwaukee-black text-white p-8 rounded-lg inline-block">
-        <p class="text-3xl font-bold text-milwaukee-red">
-          Financing Enablement for Contractors
+      <div class="bg-milwaukee-black text-white p-10 rounded-lg inline-block max-w-3xl">
+        <p class="text-3xl md:text-4xl font-bold">
+          <span class="gradient-text">Financing Enablement</span><br>
+          <span class="text-white">for Contractors</span>
         </p>
       </div>
     </div>
@@ -265,73 +401,104 @@
 
   <!-- Use Cases -->
   <section class="py-16 bg-white border-t-4 border-milwaukee-red">
-    <div class="max-w-4xl mx-auto px-4">
-      <div class="flex items-center gap-3 mb-6">
-        <span class="text-4xl">🔧</span>
-        <h2 class="text-3xl font-bold text-gray-900">This Is For You If...</h2>
-      </div>
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center fade-in">
+      <h2 class="text-3xl md:text-4xl font-bold text-milwaukee-black mb-12">
+        This Is For You If...
+      </h2>
 
-      <div class="grid md:grid-cols-2 gap-4">
-        <div class="bg-milwaukee-gray p-6 rounded-lg border-l-4 border-milwaukee-red">
+      <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6 max-w-6xl mx-auto">
+        <div class="bg-milwaukee-gray p-6 rounded-lg border-l-4 border-milwaukee-red text-left">
           <p class="text-gray-800">You applied for financing but got <strong>denied or ignored</strong>.</p>
         </div>
-        <div class="bg-milwaukee-gray p-6 rounded-lg border-l-4 border-milwaukee-red">
+        <div class="bg-milwaukee-gray p-6 rounded-lg border-l-4 border-milwaukee-red text-left">
           <p class="text-gray-800">A lender asked for your business website — and <strong>you don't have one</strong>.</p>
         </div>
-        <div class="bg-milwaukee-gray p-6 rounded-lg border-l-4 border-milwaukee-red">
+        <div class="bg-milwaukee-gray p-6 rounded-lg border-l-4 border-milwaukee-red text-left">
           <p class="text-gray-800">A referrer wants to send you clients but says you <strong>"need a better presence."</strong></p>
         </div>
-        <div class="bg-milwaukee-gray p-6 rounded-lg border-l-4 border-milwaukee-red">
+        <div class="bg-milwaukee-gray p-6 rounded-lg border-l-4 border-milwaukee-red text-left">
           <p class="text-gray-800">You're tired of using a <strong>Gmail address on bids</strong>.</p>
         </div>
-        <div class="bg-milwaukee-gray p-6 rounded-lg border-l-4 border-milwaukee-red md:col-span-2">
-          <p class="text-gray-800 text-center">You want to close <strong>$10k+ jobs</strong> — and know you need to <strong>look the part</strong>.</p>
+        <div class="bg-milwaukee-gray p-6 rounded-lg border-l-4 border-milwaukee-red text-left md:col-span-2 lg:col-span-2">
+          <p class="text-gray-800">You want to close <strong>$10k+ jobs</strong> — and know you need to <strong>look the part</strong>.</p>
         </div>
       </div>
     </div>
   </section>
 
   <!-- CTA -->
-  <section class="py-16 bg-milwaukee-black text-white">
-    <div class="max-w-4xl mx-auto px-4 text-center">
-      <h2 class="text-3xl font-bold mb-6">Ready to Build Credibility?</h2>
-      <p class="text-xl text-gray-300 mb-8">
+  <section class="py-20 bg-milwaukee-black text-white">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center fade-in">
+      <h2 class="text-3xl md:text-4xl font-bold mb-6">Ready to Build Credibility?</h2>
+      <p class="text-xl md:text-2xl text-gray-300 mb-8 max-w-3xl mx-auto">
         Let's get you financing-ready and looking legitimate.
       </p>
-      <div class="flex flex-col sm:flex-row gap-4 justify-center">
-        <a href="/#pricing" class="bg-milwaukee-red px-8 py-4 rounded font-bold text-lg hover:bg-red-700 transition-colors">
-          See Packages →
+      <div class="flex flex-col sm:flex-row gap-4 justify-center items-center">
+        <a href="tel:5022409897" class="bg-milwaukee-red text-white px-8 py-4 hover-grow inline-block transition-all tracking-wide font-bold rounded text-lg focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-milwaukee-red">
+          Call (502) 240-9897
         </a>
-        <a href="/platform-matcher.html" class="bg-white text-milwaukee-black px-8 py-4 rounded font-bold text-lg hover:bg-gray-100 transition-colors">
+        <a href="/#pricing" class="bg-white text-milwaukee-black px-8 py-4 hover-grow inline-block transition-all tracking-wide font-bold rounded text-lg focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-milwaukee-red">
+          See Packages
+        </a>
+        <a href="/platform-matcher.html" class="bg-transparent border-2 border-white text-white px-8 py-4 hover-grow inline-block transition-all tracking-wide font-bold rounded text-lg hover:bg-white hover:text-milwaukee-black focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-white">
           Platform Matcher →
-        </a>
-        <a href="/#contact" class="bg-transparent border-2 border-white px-8 py-4 rounded font-bold text-lg hover:bg-white hover:text-milwaukee-black transition-colors">
-          Let's Talk →
         </a>
       </div>
 
-      <div class="mt-12 pt-8 border-t border-gray-700">
+      <div class="mt-12 pt-8 border-t border-gray-700 max-w-3xl mx-auto">
         <p class="text-gray-400 mb-2">Veteran-owned. Contractor-focused. Financing-ready.</p>
-        <a href="tel:5022409897" class="text-milwaukee-red font-bold text-xl hover:text-red-400 transition-colors">
-          (502) 240-9897
-        </a>
       </div>
     </div>
   </section>
 
+  </main>
+
   <!-- Footer -->
   <footer class="bg-milwaukee-black border-t-4 border-milwaukee-red py-8">
-    <div class="max-w-4xl mx-auto px-4 text-center">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
       <p class="text-gray-400 mb-2">&copy; 2025 VetMG Media LLC. All rights reserved.</p>
       <p class="text-gray-500 text-sm">USAF Veteran-Owned | Serving Contractors Nationwide</p>
     </div>
   </footer>
 
   <script>
+    // Mobile menu toggle
+    const menuToggle = document.getElementById('menu-toggle');
+    const mobileMenu = document.getElementById('mobile-menu');
+
+    if (menuToggle && mobileMenu) {
+      menuToggle.addEventListener('click', () => {
+        mobileMenu.classList.toggle('hidden');
+        const isExpanded = mobileMenu.classList.contains('hidden') ? 'false' : 'true';
+        menuToggle.setAttribute('aria-expanded', isExpanded);
+      });
+    }
+
     // Track manifesto page views and engagement
     gtag('event', 'page_view', {
       'page_title': 'Positioning Manifesto',
       'page_location': window.location.href
+    });
+
+    // Track phone number clicks
+    document.querySelectorAll('a[href^="tel:"]').forEach(link => {
+      link.addEventListener('click', () => {
+        gtag('event', 'phone_click', {
+          'event_category': 'Contact',
+          'event_label': 'Manifesto Phone Click',
+          'value': link.href
+        });
+      });
+    });
+
+    // Track CTA clicks
+    document.querySelectorAll('a[href*="pricing"], a[href*="platform-matcher"]').forEach(link => {
+      link.addEventListener('click', () => {
+        gtag('event', 'cta_click', {
+          'event_category': 'Manifesto',
+          'event_label': link.textContent.trim()
+        });
+      });
     });
 
     // Track section scrolls
